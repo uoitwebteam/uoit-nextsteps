@@ -1,0 +1,66 @@
+<ui-gmap-google-map class="google-map {{ home.map.transformClass }}"
+	ng-class="{ 'hidden': !home.mapVisible, 'loading': home.sequence[0].globe[1] && !home.sequence[0].location, 'mapexpand': home.sequence[0].globe[2] && !home.map.static, 'mapmoved': home.sequence[0].location && !home.map.static,  'mapstatic': home.map.static}"
+	center="home.map.center"
+	zoom="home.map.zoom"
+	pan="1"
+	options="home.mapOptions">
+	<ui-gmap-marker ng-repeat="marker in home.mapMarkers" ng-init="isUser = ($index == 0)"
+		idKey="marker.code"
+    coords="{latitude: marker.coords[0], longitude: marker.coords[1]}"
+    options="home.markerOptions"
+    icon="marker.icon"> <!-- events="{ mouseover: home.showPointDetail }" -->
+    <ui-gmap-window options="home.windowOptions" ng-if="marker.allowed" show="isUser">
+    	<div class="window-content">
+    		{{ marker.name }}
+    		<div class="placeholder" ng-class="{ 'hideme': !!marker.name }">Future UOIT Student (me)</div>
+    		<!-- <small><br/>{{ marker.place || 'Weirdsville, Vietnam'}}<br/></small> -->
+    		<span class="date">{{ marker.date | date:'MMMM d, yyyy' }}</span>
+    	</div>
+    </ui-gmap-window>
+	</ui-gmap-marker>
+	
+<!--     <ui-gmap-polyline path='home.polyline.path'
+      stroke='home.polyline.stroke'
+      geodesic='home.polyline.geodesic'
+      visible='home.polyline.visible'
+      fit='home.polyline.fit'
+      static='home.polyline.static'>
+		</ui-gmap-polyline> -->
+<!-- 	<ui-gmap-search-box
+	  template="'searchbox.tpl.html'"
+	  events="{}"
+	  parentdiv="'input-container'">
+	</ui-gmap-search-box> -->
+</ui-gmap-google-map>
+
+<!-- <script id="searchbox.tpl.html" type="text/ng-template">
+  <input type="text" placeholder="Search">
+</script> -->
+
+<aside class="cta" ng-show="home.sequence[0].location&&userLocation.allowed&&home.addedLocation!==true" ng-class="{'animated fadeOut': home.addedLocation === true}">
+
+	<div class="input-container" id="input-container" ng-class="{'locating': home.addedLocation == 'locating'}">
+		<small class="margin-bottom">	
+			Help contribute to a world map of your new UOIT friends!
+		</small>
+		<label for="locationInput">ADD YOUR NAME?</label>
+		<div class="input-wrapper">
+			<input type="text" ng-model="userLocation.name" placeholder="Future UOIT Student (me)" id="locationInput" />
+		</div>
+		<button type="submit" class="buttonWhite" ng-click="addLocation()" id="submitLocation">
+			<span ng-class="{'ion-android-upload': home.addedLocation == 'locating', 'ion-alert-circled': home.addedLocation == 'failed', 'ion-checkmark': !home.addedLocation }"></span>
+			<span class="show-for-sr">Submit name with location</span>
+		</button>
+		<label class="error" ng-show="home.addedLocation == 'failed'" for="submitLocation"> Error! Try again?</label>
+		<small>	
+			Not interested?
+			<nobr><button type="submit" class="buttonWhite smallBtn" ng-click="addLocation(true)"><span class="ion-plus-circled"></span> Add without name</button>&nbsp;
+			<button type="submit" class="buttonWhite smallBtn" ng-click="removeMarker()"><span class="ion-close-circled"></span> Remove my marker</button></nobr>
+		</small>
+	</div>
+<!-- 	<div class="button-container">
+		<a href="#student-life" class="buttonWhite" title="Learn about UOIT's Student Life" du-smooth-scroll>
+			Prepare for success!<br/><span class="ion-chevron-down"></span>
+		</a>
+	</div> -->
+</aside>

@@ -1,0 +1,346 @@
+@mixin expand($width) {
+  max-width: none !important;
+  width: $width !important;
+}
+
+
+body, html {
+	@include breakpoint(small only) {
+		font-size: 14px;
+	}
+	@include breakpoint(medium only) {
+		font-size: 15px;
+	}
+}
+
+
+.location-msg {
+	@include breakpoint(small only) {
+    @include expand(95%);
+  }
+}
+
+.section-1 {
+	// background: rgba($uoitlightblue, 0.8);
+	// transition: 0.5s;
+	// .logo {
+	// 	@include center(both);
+	// }
+	div {
+		@include breakpoint(small only) {
+    	@include expand(95%);
+	  }
+	}
+ //  h1, .buttonWhite {
+ //  	color: white;
+ //  	//mix-blend-mode: overlay;
+ //    z-index: 100;
+ //  }
+	// h1 {
+ //    small {
+ //    	color: white;
+ //    }
+	// }
+}
+
+.section-2 {
+	@include breakpoint(small only) {
+		background-image: url('../images/768/ub_bg.jpg');
+		background-size: auto 190%;
+		&::before {
+			background-image: none;
+			background: rgba(white, 0.8);
+		}
+	}
+	@include breakpoint(medium only) {
+		background-image: url('../images/1280/ub_bg.jpg');
+		&::before {
+			background-size: 80%;
+		}
+	}
+	.text-container {
+		@include breakpoint(small only) {
+			@include expand(100%);
+	    padding: 15% 1.5rem;
+		}
+		@include breakpoint(medium only) {
+			@include expand(60%);
+	    padding: 15% 2rem;
+		}
+	}
+	.list-container {
+		@include breakpoint(medium down) {
+			padding-right: 0;
+		}
+	}
+}
+
+.section-3 {
+	@include breakpoint(small only) {
+		height: auto;
+	}
+	@include breakpoint(medium only) {
+		height: 1800px;
+	}
+	.bg-text {
+		@include breakpoint(small only) {
+			width: 100%;
+		}
+		@include breakpoint(medium only) {
+			width: 50%;
+		}
+		svg {
+			@include breakpoint(small only) {
+				@include viewport-unit(width, 100vw);
+				height: auto;
+				padding-left: 0;
+				position: relative;
+		    padding: 5% 1.5rem 15%;
+			}
+			@include breakpoint(medium only) {
+				padding-left: 2rem;
+				padding-top: 15%;
+				@include viewport-unit(width, 40vw);
+				height: auto;
+			}
+		}
+		&.attached svg,
+		&.unattached svg {
+			@include breakpoint(medium down) {
+				position: static;
+			}
+		}
+	}
+	article {
+		@include breakpoint(medium only) {
+			max-width: 50%;
+	    padding: 10% 2rem;
+		}
+		@include breakpoint(small only) {
+			max-width: 100%;
+			float: none;
+	    padding: 15% 1.5rem;
+		}
+	}
+}
+
+.section-4 {
+	article {
+		@include breakpoint(small only) {
+	    padding: 15% 1.5rem;
+		}
+		@include breakpoint(medium only) {
+	    padding: 15% 2rem;
+		}
+	}
+	.faculty-list {
+		@include breakpoint(small only) {
+	    padding: 15% 0;
+	    background-image: none;
+		}
+		@include breakpoint(medium only) {
+			background-size: 80%;
+		}
+		ul {
+			@include breakpoint(small only) {
+				@include expand(100%);
+			}
+			@include breakpoint(medium only) {
+				@include expand(80%);
+			}
+			li {
+				@include breakpoint(small only) {
+					padding: 1.5rem;
+					margin: 0;
+					margin-top: 10rem;
+					background: rgba(255,255,255, 0.8);
+				}
+				@include breakpoint(medium only) {
+					margin-bottom: 10rem; 
+				}
+				h3 {
+					@include breakpoint(small only) {
+						font-size: 4rem;
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+.section-5 {
+	@include breakpoint(small only) {
+    padding: 15% 1.5rem;
+	}
+	@include breakpoint(medium only) {
+    padding: 15% 2rem;
+	}
+	p, .skill-list {
+		@include breakpoint(small only) {
+			text-align: left;
+		}
+	}
+	.list-container {
+		@include breakpoint(small only) {
+			width: 100%;
+		}
+		ul {
+			.cal-item {
+				ul{
+					li {
+						@include breakpoint(small only) {
+					    padding: 0.5rem;
+						}
+					}
+				}
+			}
+		}
+	}
+	.buttonWhite {
+		@include breakpoint(small only) {
+			width: auto;
+		}
+		@include breakpoint(medium only) {
+			width: 60%;
+		}
+	}
+}
+
+.section-6 {
+	@include breakpoint(small only) {
+    padding: 15% 1.5rem;
+		background-image: url('../images/768/hunter-bg_white.jpg');
+		background-size: auto 125%;
+	}
+	@include breakpoint(medium only) {
+    padding: 15% 2rem;
+		background-image: url('../images/1280/hunter-bg_white.jpg');
+	}
+	article {
+		@include breakpoint(medium down) {
+			margin: 0;
+			width: 100%;
+			margin-bottom: 1.5rem;
+		}
+	}
+}
+
+.section-7 {
+	@include breakpoint(small only) {
+    padding: 15% 1.5rem;
+    background-color: rgba($uoitdarkblue, 0.85);
+    &::after {
+    	background-image: none;
+    }
+	}
+	@include breakpoint(medium only) {
+    &::after {
+    	background-size: 85%;
+    }
+	}
+  article {
+		@include breakpoint(small only) {
+			left: 0;
+			width: 100%;
+			padding-left: 0;
+			text-align: left;
+			color: #fff;
+			h2, h3 {
+				color: #fff;
+			}
+  	}
+		@include breakpoint(medium only) {
+			// @include viewport-unit(left, 30vw);
+			// @include viewport-unit(width, 80vw);
+			left: 20%;
+			width: 80%;
+		}
+  }
+}
+
+.section-8 {
+	@include breakpoint(small only) {
+    padding: 15% 1.5rem;
+  }
+	@include breakpoint(medium only) {
+    padding: 15% 2rem;
+  }
+  .article-container {
+		@include breakpoint(medium down) {
+			position: relative;
+			top: 0;
+			left: 0;
+			transform: none;
+			width: 100%;
+		}
+  	article {
+			@include breakpoint(medium down) {
+	  		width: 100%;
+	  		min-height: auto;
+	  		padding: 0;
+	  		margin: 0;
+	  		float: none;
+	  		background: transparent;
+	  	}
+  	}
+  }
+
+}
+
+
+.list-container {
+	@include breakpoint(small only) {
+		padding: 1rem 0;
+	}
+	ul {
+		li {
+			@include breakpoint(small only) {
+	  		padding: 0.75rem 0.5rem;
+	  	}
+  		&.has-highlight.active {
+				@include breakpoint(medium down) {
+	  			padding: 0.75rem 0.5rem;
+	  			margin: 0 0 4px 0;
+	  			width: 100%;
+	  		}
+  		}
+		}
+	}
+}
+
+.google-map {
+	// @include center(both, fixed);
+ //  @include radialGrad(rgba(255,255,255,0), rgba(255,255,255,0.5));
+	// z-index: 100;
+	// width: 500px;
+	// height: 500px;
+	// border-radius: 500px;
+	// overflow: hidden;
+ //  transition: 3s ease-in-out;
+	&.mapmoved {
+		@include breakpoint(small only) {
+    	@include expand(100%);
+			z-index: 0;
+			//display: none;
+	  	right: 0;
+		  transform: translateX(100%) translateY(-50%);
+		}
+	}
+	// &::after {
+ //  	@include radialGrad(rgba(0,0,0,0.6), rgba(0,0,0,1));
+ //  	width: 100%;
+ //  	height: 100%;
+ //  	position: absolute;
+ //  	left: 0;
+ //  	top: 0;
+ //  	content: '';
+ //  	opacity: 0;
+ //  	transition: 1s;
+	// }
+	// &.loading {
+	//   &::after {
+	//   	opacity: 1;
+	//   }
+	// }
+}

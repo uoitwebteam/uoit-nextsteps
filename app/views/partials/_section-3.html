@@ -1,0 +1,36 @@
+<section class="section-3" ng-show="home.sequence[0].location" id="student-life">
+	<div class="bg-text" ng-class="{'attached' : home.sequence[3].attach, 'unattached' : home.sequence[3].unattach}" in-view="home.attachHeader($inview, $inviewpart);">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 784.38"><defs><style>.cls2-1{font-size:153px;fill:rgba(255,255,255,0.8);font-family:franklin_gothic_fscondensed;}.cls2-2{font-size:367px;}.cls2-3{font-size:122px;}.cls2-4{font-size:352px;}.cls2-5{letter-spacing:-5px;}</style></defs><text class="cls2-1" transform="translate(-1.46 120.41)">STUDENT<tspan class="cls2-2"><tspan x="-20.79" y="270">LIFE</tspan></tspan><tspan class="cls2-3"><tspan x="3.06" y="375">WELCOMES</tspan></tspan><tspan class="cls2-4"><tspan class="cls2-5" x="17.14" y="641">Y</tspan><tspan x="149.84" y="641">OU</tspan></tspan></text></svg>
+	</div>
+	<article>
+		<h2>Make the most of your student experience and plan for success.</h2>
+<!-- 		<p>You will be equipped for success by developing your academic, professional and personal skills; connecting with your peers, faculty and staff; and getting involved in all aspects of university life.</p> -->
+		<p>Learn about and register for upcoming events and workshops available to all first-year students!</p>
+		<div class="list-container">
+			<div ng-repeat="month in ::home.section3months">
+				<h2 class="animated"
+					in-view="month.show = $inview"
+					in-view-options="{offsetTop: 50, offsetBottom: -50}"
+					ng-class="{'fadeOutLeft' : !month.show, 'fadeInLeft' : month.show}">
+						{{ ::month.month }}
+				</h2>
+				<ul>
+			  	<li ng-repeat="point in ::month.points" class="animated"
+						in-view="point.show = $inview"
+						in-view-options="{offsetTop: 50, offsetBottom: -50}"
+						ng-class="{'fadeOutRight' : !point.show, 'fadeInRight' : point.show, 'has-highlight' : point.highlight, 'active' : point.highlight.active }">
+			  			<label>
+			  				<input type="checkbox" name="checklist" ng-model="point.complete" ng-change="home.checklist.toggle(point.complete)"></input>
+			  				<span class="indicator"></span>
+			  				<span ng-bind-html="::point.text">
+			  				</span>
+			  			</label>
+			  	</li>
+				</ul>
+			</div>
+		</div>
+		<a href="#ibegin" class="button" title="Register for iBegin" du-smooth-scroll>
+			<span class="ion-compose"></span> Learn more and register!
+		</a>
+	</article>
+</section>

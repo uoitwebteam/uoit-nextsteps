@@ -1,0 +1,35 @@
+<section class="section-6" ng-show="home.sequence[0].location"
+		in-view="home.mapVisible = !$inview;" id="accessibility" parallax-background parallax-ratio="0.2" parallax-vertical-offset="{{ mobile ? 0 : 100 }}">
+	<h2><span class="ion-ios-body"></span><br/>Student Accessibility Services (SAS)</h2>
+	<article class="animated" 
+		in-view="home.sequence[4].sas[0] = $inview;"
+		in-view-options="{offsetTop: 50, offsetBottom: -50}"
+		ng-class="{'fadeOutLeft' : !home.sequence[4].sas[0], 'fadeInLeft' : home.sequence[4].sas[0]}">
+		<h3>Transition evening for parents of students with disabilities</h3>
+		<p>This is an opportunity to meet fellow parents of university students with disabilities; learn about the services offered through the Student Accessibility Services office and how we will support your student; and hear some success stories.</p>
+		<p><span class="icon icon_calendar inline-icon"></span>Monday, August 22 from 5 to 8 p.m.</p>
+	</article>
+	<article class="animated" 
+		in-view="home.sequence[4].sas[1] = $inview;"
+		in-view-options="{offsetTop: 50, offsetBottom: -50}"
+		ng-class="{'fadeOutRight' : !home.sequence[4].sas[1], 'fadeInRight' : home.sequence[4].sas[1]}">
+		<h3>Summer Transition Program</h3>
+		<p>The Summer Transition Program (STP) is for new students at UOIT who identify as a person with a disability. This program will help you to:</p>
+		<ul class="block-list">
+			<li>understand the real differences between high school and university.</li>
+			<li>learn about self-advocacy and how to use your strengths.</li>
+			<li>get your campus ID.</li>
+			<li>become familiar with the software and learning platforms you will use regularly at UOIT.</li>
+			<li>learn some valuable strategies to make the most of your university experience.</li>
+			<li>meet some key staff who will arrange your academic and learning supports.</li>
+			<li>become familiar with the campus and the Oshawa area.</li>
+			<li>make new friends and have some fun!</li>
+		</ul>
+		<p>
+		<span class="icon icon_calendar inline-icon"></span>Tuesday, August 23 and Wednesday, August 24 from 9 a.m. to 8 p.m.<br/>
+		<span class="icon icon_calendar inline-icon"></span>Thursday, August 25 from 9 a.m. to 4 p.m.</p>
+	</article>
+	<aside class="cta">
+		<a href="http://studentlife.uoit.ca/student-accessibility-services/summer_transition_program/registration.php" target="_blank" class="button">Register for SAS programs</a>
+	</aside>
+</section>

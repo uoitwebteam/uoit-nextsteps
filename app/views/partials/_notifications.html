@@ -1,0 +1,24 @@
+<div class="location-msg animated hidden"
+	ng-class="{ 'hidden': !home.sequence[0].globe[1], 'fadeIn': home.sequence[0].globe[1] && !home.sequence[0].location, 'fadeOut': home.sequence[0].location }">
+	<h1><span class="icon icon_launchtour"></span><br/>May we locate you?</h1>
+	<h2>This site makes use of HTML5 geolocation to enhance its interactivity.</h2>
+	<p>The University of Ontario Institute of Technology <strong>does not collect any personally identifiable information</strong> from your location, and your location <strong>will not be known if you decline</strong>.</p>
+	<button class="buttonWhite greener" ng-click="home.captureUserLocation()" ng-class="{'disabled' : userLocation.locating}">
+		<span ng-show="userLocation.allowed === null && !userLocation.locating">Count me in!</span>
+		<span ng-show="userLocation.locating">Locating...</span>
+		<span ng-show="userLocation.allowed === false">Try again?</span>
+		<span ng-show="userLocation.allowed === true">Got it, thanks!</span>
+	</button>
+	<button class="buttonWhite" ng-show="userLocation.allowed !== true" ng-click="home.initSequence3()">No thanks</button>
+</div>
+
+<div class="alert-wrapper" ng-show="home.sequence[0].location"> 
+<div class="alert-msg animated" ng-class="{ 'fadeInUp': alert.active, 'fadeOutDown': !alert.active && alert.shown }">
+	<span class="ion-checkmark-circled"></span>
+	<div class="msg">
+		Your progress has been saved!<br/>
+		<small>Keep checking back and checking things off so you never forget your <strong>next steps!</strong></small>
+		<a class="close-btn ion-close" ng-click="alert.close()"></a>
+	</div>
+</div>
+</div>

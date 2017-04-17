@@ -1,0 +1,29 @@
+<section class="section-5" ng-show="home.sequence[0].location"
+		in-view="home.mapVisible = !$inview;video.visible = $inview && $inviewpart != 'top' && $inviewpart != 'bottom' ? false : true;" id="smart-start">
+	<h2>Smart Start</h2>
+	<p>Our Smart Start program will provide a head start in your university career!  Review prerequisite skills, brush up your writing, get study tips and meet other first years.</p>
+	<p>Topics in faculty-specific sessions will cover:</p>
+	<ul class="skill-list">
+		<li><span class="icon icon_graduate"></span> prerequisite academic skills</li>
+		<li><span class="ion-calculator"></span> math</li>
+		<li><span class="icon icon_penwriting"></span> writing</li>
+		<li><span class="icon icon_tablet"></span> study strategies</li>
+		<li><span class="ion-clock"></span> time management</li>
+	</ul>
+	<div class="list-container">
+		<ul>
+			<li class="cal-item animated" ng-repeat="faculty in ::home.smartstartList"
+				in-view="faculty.show = $inview"
+				in-view-options="{offsetTop: 50, offsetBottom: -50}"
+				ng-class="{'flipOutX' : !faculty.show, 'flipInX' : faculty.show }">
+				<h3 ng-style="::{ borderLeft: 'solid 10px '+faculty.fac[1] }">{{ ::faculty.fac[0] }}</h3>
+				<h3 ng-if="::faculty.fac2" ng-style="::{ borderLeft: 'solid 10px '+faculty.fac2[1] }">{{ ::faculty.fac2[0] }}</h3>
+				<h3 ng-if="::faculty.fac3" ng-style="::{ borderLeft: 'solid 10px '+faculty.fac3[1] }">{{ ::faculty.fac3[0] }}</h3>
+				<ul>
+					<li ng-repeat="date in ::faculty.dates">{{ ::date }}</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<a href="http://studentlife.uoit.ca/student-learning/smart-start.php" class="buttonWhite" target="_blank">Learn more about Smart Start</a>
+</section>

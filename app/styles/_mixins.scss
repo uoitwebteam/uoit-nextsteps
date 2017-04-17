@@ -1,0 +1,309 @@
+// colors
+$uoitlightblue: #0077CA;
+$uoitdarkblue: #003C71;
+$uoitlightgrey: #F6F7F7;
+$uoitmediumgrey: #DCDDDF;
+$uoitdarkgrey: #53565A;
+
+// spacing
+$full-space: 40px;
+$half-space: 20px;
+
+// font sizing
+$font-size--xs: 10px;
+$font-size--sm: 12px;
+$font-size--md: 16px;
+$font-size--lg: 24px;
+$font-size--xl: 32px;
+
+@mixin center($axis: both, $position: absolute) {
+	position: $position;
+  @if $axis == "x" {
+	  left: 50%;
+	  -ms-transform: translateX(-50%);
+	  -moz-transform: translateX(-50%);
+	  -webkit-transform: translateX(-50%);
+	  transform: translateX(-50%);
+  } @else if $axis == "y" {
+	  top: 50%;
+	  -ms-transform: translateY(-50%);
+	  -moz-transform: translateY(-50%);
+	  -webkit-transform: translateY(-50%);
+	  transform: translateY(-50%);
+  } @else if $axis == "both" {
+	  left: 50%;
+	  top: 50%;
+	  -ms-transform: translateX(-50%) translateY(-50%);
+	  -moz-transform: translateX(-50%) translateY(-50%);
+	  -webkit-transform: translateX(-50%) translateY(-50%);
+	  transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+@mixin cover($position: absolute) {
+  max-width: none;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  @include center(both, $position);
+}
+
+@mixin radialGrad($from: black, $to: transparent) {
+	background: -moz-radial-gradient(center, ellipse cover,  $from 0%, $to 100%) !important;
+	background: -webkit-radial-gradient(center, ellipse cover,  $from 0%, $to 100%) !important;
+	background: radial-gradient(ellipse at center,  $from 0%, $to 100%) !important;
+	//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 ) !important;
+}
+
+@mixin icon($char: "", $family: "Ionicons") {
+  @if $char != "" {
+    content: $char;
+  }
+  display: inline-block;
+  font-family: $family;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin inputStyles($base: 16px, $color: $uoitlightblue, $contrast: light, $radius: 80%) {
+
+	$input-spacing: $base * 1.125 !default; // adjust depending on font-family
+
+  cursor: pointer;
+  display: inline-block;
+  padding-left: ($input-spacing * 2) + $input-spacing;
+  position: relative;
+  //font-size: $input-unit;
+  //line-height: $input-spacing;
+  //color: $color;
+
+  input {
+    position: absolute;
+    width: auto !important;
+    z-index: 1;
+    opacity: 0;
+    &:checked ~ .indicator {
+	    &:after {
+	      transform: scale(1);
+	      transform-origin: center center;
+  -webkit-animation-duration: .75s;
+  animation-duration: .75s;
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
+	    }
+	  }
+  }
+
+  .indicator {
+	    &:after {
+	      //border-radius: $radius;
+	      //background: $color;
+	      display: block;
+	      height: 100%;
+	      position: absolute;
+	      top: 0;
+	      left: 0;
+	      transform: scale(0);
+	      transform-origin: center center;
+	      transition: 0.3s ease;
+	      width: 100%;
+  			font-size: $base*2;
+  			line-height: $base * 2;
+	      color: $color;
+    		font-family: "uoit_icons" !important;
+	      content: "\e830";
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+  -webkit-animation-name: flipOutX;
+  animation-name: flipOutX;
+	    }
+    @include center(y);
+    left: 0;
+    border-radius: $radius;
+    display: block;
+    user-select: none;
+    width: $base * 2;
+    height: $base * 2;
+    text-align: center;
+    background-color: white;
+    background-size: 50% 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+	  @if $contrast == "light" {
+	  	border: solid 1px rgba($color, 0.6);
+	  }
+  }
+}
+
+@mixin gradientBg($side: left) {
+  @if $side == "right" {
+    background: -moz-linear-gradient(right,  rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0) 65%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ccffffff',GradientType=1 );
+    -webkit-box-shadow: inset -50vw 0 30vw rgba(white, 0.8);
+  } @else {
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0) 65%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', endColorstr='#00ffffff',GradientType=1 );
+    -webkit-box-shadow: inset 50vw 0 30vw rgba(white, 0.8);
+  }
+}
+
+/**
+ * Fix for vw, vh, vmin, vmax on iOS 7.
+ * http://caniuse.com/#feat=viewport-units
+ *
+ * This fix works by replacing viewport units with px values on known screen sizes.
+ *
+ * iPhone 6 and 6 Plus cannot run iOS 7, so are not targeted by this fix.
+ * Target devices running iOS 8+ will incidentally execute the media query,
+ * but this will still produce the expected result; so this is not a problem.
+ *
+ * As an example, replace:
+ *
+ *   height: 50vh;
+ *   font-size: 5vmin;
+ *
+ * with:
+ *
+ *   @include viewport-unit(height, 50vh);
+ *   @include viewport-unit(font-size, 5vmin);
+ */
+@mixin viewport-unit($property, $value) {
+  #{$property}: $value;
+
+  $unit: unit($value);
+
+  @if (index((vw, vh, vmin, vmax), $unit) != null) {
+    $devices: (
+      (768px, 1024px), // iPad (all versions)
+      (320px, 480px),  // iPhone 4
+      (320px, 568px)   // iPhone 5, 5C, 5S
+    );
+
+    @each $device in $devices {
+      $device-width: nth($device, 1);
+      $device-height: nth($device, 2);
+
+      $device-query: "only screen and (-webkit-min-device-pixel-ratio: 1)";
+      $device-query: "#{$device-query} and (device-width: #{$device-width})";
+      $device-query: "#{$device-query} and (device-height: #{$device-height})";
+
+      $percent: $value / ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
+
+      $percent-width: $device-width * $percent / 100;
+      $percent-height: $device-height * $percent / 100;
+
+      @if ($unit == vmin or $unit == vmax) {
+        @media #{$device-query} {
+          #{$property}: if($unit == vmin, $percent-width, $percent-height);
+        }
+      }
+      @else {
+        @media #{$device-query} and (orientation: portrait) {
+          #{$property}: if($unit == vw, $percent-width, $percent-height);
+        }
+
+        @media #{$device-query} and (orientation: landscape) {
+          #{$property}: if($unit == vw, $percent-height, $percent-width);
+        }
+      }
+    }
+  }
+}
+
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group functions
+////
+
+$global-font-size: 100% !default;
+
+// scss-lint:disable ZeroUnit
+
+/// Removes the unit (e.g. px, em, rem) from a value, returning the number only.
+///
+/// @param {Number} $num - Number to strip unit from.
+///
+/// @returns {Number} The same number, sans unit.
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+/// Converts one or more pixel values into matching rem values.
+///
+/// @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
+/// @param {Number} $base [null] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$base-font-size` variable as the base.
+///
+/// @returns {List} A list of converted values.
+@function rem-calc($values, $base: null) {
+  $rem-values: ();
+  $count: length($values);
+
+  // If no base is defined, defer to the global font size
+  @if $base == null {
+    $base: $global-font-size;
+  }
+
+  // If the base font size is a %, then multiply it by 16px
+  // This is because 100% font size = 16px in most all browsers
+  @if unit($base) == '%' {
+    $base: ($base / 100%) * 16px;
+  }
+
+  @if $count == 1 {
+    @return -zf-to-rem($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, -zf-to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
+}
+
+// Converts a unitless, pixel, or rem value to em, for use in breakpoints.
+@function -zf-bp-to-em($value) {
+  // Pixel and unitless values are converted to rems
+  @if unit($value) == 'px' or unitless($value) {
+    $value: rem-calc($value, $base: 16px);
+  }
+
+  // Then the value is converted to ems
+  @return strip-unit($value) * 1em;
+}
+
+/// Converts a pixel value to matching rem value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the `$global-font-size` variable.
+/// @access private
+///
+/// @param {Number} $value - Pixel value to convert.
+/// @param {Number} $base [null] - Base for pixel conversion.
+///
+/// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
+@function -zf-to-rem($value, $base: null) {
+  // Check if the value is a number
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+    @return $value;
+  }
+
+  // Calculate rem if units for $value is not rem
+  @if unit($value) != 'rem' {
+    $value: strip-unit($value) / strip-unit($base) * 1rem;
+  }
+
+  // Turn 0rem into 0
+  @if $value == 0rem {
+    $value: 0;
+  }
+
+  @return $value;
+}

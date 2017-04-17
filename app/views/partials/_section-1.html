@@ -1,0 +1,24 @@
+
+<section class="section-1" in-view="home.initSequence(); home.navMenu.active = !$inview;video.visible = $inview;"
+	in-view-options="{offsetBottom: -1}"
+	ng-class="{ 'darkened' : home.sequence[0].globe[1] }">
+	<div>
+		<img src="https://shared.uoit.ca/global/files/img/logos/UOIT_white.png"
+			alt="University of Ontario Institute of Technology"
+			class="logo animated fadeIn"
+			ng-class="{'fadeOut' : !home.sequence[0].logo&&!home.sequence[0].location, 'fadeIn' : home.sequence[0].location}" />
+
+		<h1 class="animated"
+			ng-class="{'flipInX' : home.sequence[0].heading && !home.sequence[0].globe[0], 'hidden' : !home.sequence[0].heading, 'bounceOutUp' : home.sequence[0].globe[0]}">
+			Are you ready for UOIT?<br/>
+			<small>We are ready for you!</small>
+		</h1>
+
+		<button class="buttonWhite animated" 
+			ng-class="{'bounceInUp' : home.sequence[0].cta && !home.sequence[0].globe[0], 'hidden' : !home.sequence[0].cta, 'bounceOutDown' : home.sequence[0].globe[0]}"
+			ng-click="home.initSequence2()">
+			Get ready for September
+		</button>
+	</div>
+
+</section>

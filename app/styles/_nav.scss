@@ -1,0 +1,201 @@
+@include breakpoint(medium up) {
+	.nav-btn {
+		display: none;
+	}
+	.section-nav {
+		position: fixed;
+		z-index: 10000000;
+		top: 0.5rem;
+		right: 0;
+		.top-list {
+			list-style: none;
+			&.active {
+				li {
+					right: 2.75rem;
+				}
+			}
+			li {
+				position: relative;
+				transition: 0.3s ease;
+				background: rgba(white, 0.8);
+				transform: translateX(100%);
+				right: 0;
+				a {
+					display: block;
+					padding: 0.5rem 1rem;
+					font-family: franklin_gothic_fsdemi;
+					text-transform: uppercase;
+					span:not(.fac-name) {
+						margin-right: 1rem;
+					}
+				}
+				.smart-start {
+					display: none;
+					font-size: 0.75rem;
+					margin: 0 5px 5px;
+					text-align: right;
+					color: white;
+				}
+				&:hover, &.active {
+					background: rgba($uoitlightblue, 0.9);
+					box-shadow: 0 0 15px rgba(0,0,0,0.15);
+					right: 0;
+					transform: translateX(0);
+					.smart-start {
+						display: block;
+					}
+					a {
+						color: white;
+					}
+					ul {
+						display: block;
+					}
+				}
+				ul {
+					display: none;
+					list-style: none;
+					padding-bottom: 1rem;
+					li {
+						background: rgba(white,0.1);
+						border-left: solid 1px rgba(white, 0.8);
+				// transform: translateX(100%);
+				// 		right: 0;
+						a {
+							color: $uoitlightblue;
+							font-family: franklin_gothic_fsbook;
+							font-size: 0.75rem;
+							white-space: nowrap;
+							overflow: hidden;
+							width: 0;
+						}
+						&:hover, &.active {
+							//box-shadow: none;
+							background: rgba(white, 0.2);
+							a{
+								width: auto;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint(small only) {
+	.nav-btn {
+		@include center(x, fixed);
+		z-index: 100000001;
+		top: 0;
+		margin: 0;
+		padding: 0.25rem 1.5rem;
+	}
+	.section-nav {
+		position: fixed;
+		z-index: -100000;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('../images/hunter-bg_white.jpg');
+		background-size: cover;
+		background-position: center;
+		opacity: 0;
+		transition: 0.4s;
+		overflow-y: scroll;
+		.top-list {
+			margin: 0;
+			list-style: none;
+			text-align: center;
+			padding: 4rem 1rem 2rem;
+			width: 100%;
+			min-height: 100%;
+			background: rgba(white, 0.7);
+			// &.active {
+			// 	li {
+			// 	}
+			// }
+			li {
+				margin-bottom: 1.5rem;
+					font-family: franklin_gothic_fsdemi;
+					text-transform: uppercase;
+				a {
+					font-size: 1.5rem;
+					line-height: 1;
+					span {
+						font-size: 2.5rem;
+						display: block;
+					}
+				}
+				.smart-start {
+					display: none;
+				}
+				&:hover, &.active {
+					.smart-start {
+					}
+					a {
+					}
+					ul {
+					}
+				}
+				ul {
+					//display: none;
+					padding-top: 1rem;
+					list-style: none;
+					margin: 0;
+					li {
+						margin-bottom: 0;
+						a {
+							font-size: 1rem;
+							span {
+								display: inline;
+								font-size: 1rem;
+							}
+						}
+						&:hover, &.active {
+							a{
+							}
+						}
+					}
+				}
+			}
+		}
+		&.open {
+			z-index: 10000000;
+			opacity: 1;
+			.top-list {
+				opacity: 1;
+				li {
+				  -webkit-animation-name: bounceInUp;
+				  animation-name: bounceInUp;
+				  -webkit-animation-fill-mode: both;
+				  animation-fill-mode: both;
+				  $elements: 8;
+					@for $i from 1 to $elements {
+					  &:nth-child(#{$i}) {
+						  -webkit-animation-duration: #{400+(($i*$i)*(100/$i))}ms;
+						  animation-duration: #{400+(($i*$i)*(100/$i))}ms;
+					  }
+					}
+					ul li {
+						-webkit-animation-name: zoomInUp;
+					  animation-name: zoomInUp;
+					  -webkit-animation-fill-mode: both;
+					  animation-fill-mode: both;
+					  $elements: 7;
+						@for $i from 1 to $elements {
+						  &:nth-child(#{$i}) {
+							  -webkit-animation-duration: #{400+(($i*$i)*(100/$i))}ms;
+							  animation-duration: #{400+(($i*$i)*(100/$i))}ms;
+						  }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
