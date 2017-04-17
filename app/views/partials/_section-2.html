@@ -26,7 +26,7 @@
 			  		ng-if="!point.level||point.level==level"
 						in-view="point.show = $inview"
 						in-view-options="{offsetTop: 50, offsetBottom: -50}"
-						ng-class="{'fadeOutLeft' : !point.show, 'fadeInLeft' : point.show, 'has-highlight' : point.highlight, 'active' : point.highlight.active&&!home.map.static&&!mobile }">
+						ng-class="{'fadeOutLeft' : !point.show, 'fadeInLeft' : point.show }">
 			  			<label in-view="!mobile&&$inview&&home.updateLocations(point, $inview);"
 								in-view-options="{offsetTop: 200, offsetBottom: -200}">
 			  				<input type="checkbox" name="checklist" ng-model="point.complete" ng-change="home.checklist.toggle(point.complete)"></input>
@@ -39,11 +39,11 @@
 			</div>
 		</div>
 	</div>
-	<aside class="info-banner animated fadeIn" ng-if="!mobile&&!home.map.static&&home.mapMarkers">
+<!-- 	<aside class="info-banner animated fadeIn" ng-if="!mobile&&!home.map.static&&home.mapMarkers">
 		<h3><span class="ion-information-circled animated fadeInRight"></span> Points of interest</h3>&nbsp;<small>See more <span class="ion-chevron-down"></span></small>
 		<dl ng-if="!home.map.static">
       <dt ng-repeat-start="marker in home.mapMarkers" class="animated fadeInRight">{{ marker.name }}</dt>
       <dd ng-repeat-end ng-bind-html="marker.desc" class="animated fadeInRight"></dd>
     </dl>
-	</aside>
+	</aside> -->
 </section>

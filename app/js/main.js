@@ -6,14 +6,12 @@ import onConfig  from './on_config';
 import onRun     from './on_run';
 
 // dependencies
-import 'lodash';
 import 'angular-sanitize';
 import 'angular-cookies';
 import 'angular-storage';
 import 'angular-scroll';
 import 'angular-inview';
 import 'angular-simple-logger';
-import 'angular-google-maps';
 import 'angular-ui-router';
 import 'angular-responsive-images/src/angular-responsive-images';
 
@@ -29,7 +27,6 @@ const requires = [
 	'ngSanitize',
   'ngCookies',
   'angular-storage',
-	'uiGmapgoogle-maps',
 	'angular-inview',
   'duScroll',
   'bhResponsiveImages',

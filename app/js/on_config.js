@@ -1,4 +1,4 @@
-function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $compileProvider, uiGmapGoogleMapApiProvider) {
+function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $compileProvider) {
   'ngInject';
 
   if (process.env.NODE_ENV === 'production') {
@@ -19,12 +19,6 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $compil
   });
 
   $urlRouterProvider.otherwise('/');
-
-  uiGmapGoogleMapApiProvider.configure({
-    //    key: 'your api key',
-    v: '3.23', //defaults to latest 3.X anyhow
-    libraries: 'geometry'
-  });
 }
 
 export default OnConfig;

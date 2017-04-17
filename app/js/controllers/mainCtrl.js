@@ -1,6 +1,6 @@
 function MainCtrl
   ($window, $scope, $stateParams, $timeout, $document, $http,
-  uiGmapGoogleMapApi, uiGmapIsReady, GeolocationService,
+  GeolocationService,
   DatastoreService, ConfigstoreService, store) {
 	'ngInject';
 
@@ -102,24 +102,6 @@ function MainCtrl
   vm.mapVisible = false;
   var mapApi;
   var mapRef;
-
-  uiGmapGoogleMapApi.then(function(maps) {
-    mapApi = maps;
-    vm.markerOptions = { animation: mapApi.Animation.DROP, icon: 'images/icons/marker_alt.svg' };
-    vm.map = { 
-      center: { 
-        latitude: 45,
-        longitude: -90
-      },
-      zoom: 2
-    };
-    vm.mapOptions = ConfigstoreService.get('mapOptions');
-  });
-  uiGmapIsReady.promise(1).then(function(instances) {
-    instances.forEach(function(inst) {
-      mapRef = inst.map;
-    });
-  });
 
   function getCentreAvg(points) {
     var lats = points.map(function(item) {
