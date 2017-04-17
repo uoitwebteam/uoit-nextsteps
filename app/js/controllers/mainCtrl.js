@@ -256,25 +256,25 @@ function MainCtrl
 
   vm.initSequence3 = function() {
 
-      vm.map.zoom = 4;
-      vm.sequence[0].globe[1] = false;
-      vm.sequence[0].globe[2] = true;
-      s.video.blurred = false;
-      return $timeout(angular.noop, 1000).then(function(){
-        vm.sequence[0].location = true;
-        vm.mapVisible = !s.mobile;
-        mapApi.event.trigger(mapRef, 'resize');
-        return $timeout(angular.noop, 1000);
-      }).then(function(){
+      // vm.map.zoom = 4;
+      // vm.sequence[0].globe[1] = false;
+      // vm.sequence[0].globe[2] = true;
+      // s.video.blurred = false;
+      // return $timeout(angular.noop, 1000).then(function(){
+      //   vm.sequence[0].location = true;
+      //   vm.mapVisible = !s.mobile;
+      //   mapApi.event.trigger(mapRef, 'resize');
+      //   return $timeout(angular.noop, 1000);
+      // }).then(function(){
         scrollTo(angular.element(document.getElementById('welcome')), 0, 2000, easings.easeOutCirc);
-        return $timeout(angular.noop, 2000);
-      }).then(function() {
-        mapApi.event.trigger(mapRef, 'resize');
-		  	vm.map.zoom = 17;
-        vm.map.center = { 
-          latitude: polonsky[0],
-          longitude: polonsky[1]
-        };
+        // return $timeout(angular.noop, 2000);
+      $timeout(angular.noop, 2000).then(function() {
+     //    mapApi.event.trigger(mapRef, 'resize');
+		  	// vm.map.zoom = 17;
+     //    vm.map.center = { 
+     //      latitude: polonsky[0],
+     //      longitude: polonsky[1]
+     //    };
         vm.sequence[1].init = true;
 		  });
   }

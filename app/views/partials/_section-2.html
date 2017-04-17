@@ -1,4 +1,4 @@
-<section class="section-2" ng-show="home.sequence[0].location" id="welcome" parallax-background parallax-ratio="0.7" in-view="home.attachMap($inview, $inviewpart);">
+<section class="section-2" id="welcome" parallax-background parallax-ratio="0.7">
 	<div class="text-container">
 		<h1 class="animated"
 			in-view="$inview&&home.setSequence(1, 'title', $inview)"
@@ -27,8 +27,7 @@
 						in-view="point.show = $inview"
 						in-view-options="{offsetTop: 50, offsetBottom: -50}"
 						ng-class="{'fadeOutLeft' : !point.show, 'fadeInLeft' : point.show }">
-			  			<label in-view="!mobile&&$inview&&home.updateLocations(point, $inview);"
-								in-view-options="{offsetTop: 200, offsetBottom: -200}">
+			  			<label>
 			  				<input type="checkbox" name="checklist" ng-model="point.complete" ng-change="home.checklist.toggle(point.complete)"></input>
 			  				<span class="indicator"></span>
 			  				<span ng-bind-html="::point.text"></span>

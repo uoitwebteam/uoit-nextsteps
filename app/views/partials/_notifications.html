@@ -1,4 +1,4 @@
-<div class="location-msg animated hidden"
+<!-- <div class="location-msg animated hidden"
 	ng-class="{ 'hidden': !home.sequence[0].globe[1], 'fadeIn': home.sequence[0].globe[1] && !home.sequence[0].location, 'fadeOut': home.sequence[0].location }">
 	<h1><span class="icon icon_launchtour"></span><br/>May we locate you?</h1>
 	<h2>This site makes use of HTML5 geolocation to enhance its interactivity.</h2>
@@ -10,9 +10,9 @@
 		<span ng-show="userLocation.allowed === true">Got it, thanks!</span>
 	</button>
 	<button class="buttonWhite" ng-show="userLocation.allowed !== true" ng-click="home.initSequence3()">No thanks</button>
-</div>
+</div> -->
 
-<div class="alert-wrapper" ng-show="home.sequence[0].location"> 
+<div class="alert-wrapper"> 
 <div class="alert-msg animated" ng-class="{ 'fadeInUp': alert.active, 'fadeOutDown': !alert.active && alert.shown }">
 	<span class="ion-checkmark-circled"></span>
 	<div class="msg">
