@@ -78,6 +78,10 @@ body, .main-container {
   height: 100%;
 }
 
+label small {
+	text-transform: none;
+}
+
 .main-container {
 	overflow: hidden;
 	height: auto;
@@ -120,6 +124,10 @@ body, .main-container {
 	  		input {
 	  			margin: 0;
 	  		}
+  		}
+  		ul > li {
+	  		padding: 0.25rem 0.5rem;
+	  		border-left: solid 3px $uoitlightblue;
   		}
   		.list-icon {
   			@include center(y);

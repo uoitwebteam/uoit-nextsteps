@@ -12,7 +12,7 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $compil
 
   $stateProvider
   .state('Home', {
-    url: '/?l',
+    url: '/:l',
     controller: 'MainCtrl as home',
     templateUrl: 'home.html',
     title: 'Home'
