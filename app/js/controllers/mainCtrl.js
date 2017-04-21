@@ -89,68 +89,6 @@ function MainCtrl
   vm.navMenu = ConfigstoreService.get('navMenu');
   slugifyNodes(vm.navMenu.nodes, 'title');
 
-
-  vm.map = {};
-  vm.mapOptions = {};
-  vm.mapMarkers = [];
-  vm.markerOptions = {};
-  vm.windowOptions = {
-    boxClass: 'info-window',
-    disableAutoPan: true
-  };
-
-  vm.mapVisible = false;
-  var mapApi;
-  var mapRef;
-
-  function getCentreAvg(points) {
-    var lats = points.map(function(item) {
-        var lat = item.coords[0];
-        return lat;
-    });
-    var longs = points.map(function(item) {
-        var long = item.coords[1];
-        return long;
-    });
-    function getAvg(coords) {
-      var sum = coords.reduce((a, b) => a + b, 0);
-      var avg = sum / coords.length;
-      return avg;
-    }
-    return { latitude: getAvg(lats), longitude: getAvg(longs) };
-    //console.log( [getAvg(lats), getAvg(longs)] );
-  }
-
-  var lastPoint;
-  vm.updateLocations = function(point, $inview) {
-    if (point.highlight) {
-      point.highlight.active = $inview;
-      if (!vm.map.static) {
-        if (point.highlight.active) {
-          vm.map.transformClass = point.highlight.transformClass;
-          vm.map.zoom = point.highlight.zoom;
-          if (point.highlight.locations && point.highlight.locations !== vm.mapMarkers) {
-            vm.markerOptions = { animation: mapApi.Animation.DROP, icon: point.highlight.marker };
-            vm.map.center = getCentreAvg(point.highlight.locations);
-            vm.mapMarkers = point.highlight.locations;
-          }
-          lastPoint = point.highlight;
-        } else {
-          vm.map.transformClass = lastPoint.transformClass;
-          vm.map.zoom = lastPoint.zoom;
-          if (lastPoint.locations) {
-            vm.mapMarkers = lastPoint.locations;
-          } else {
-            vm.mapMarkers = [];
-          }
-        }
-      }
-    }
-  }
-  // vm.showPointDetail = function(marker, ev, model, args) {
-  //   //console.log(marker, ev, model, args);
-  // }
-
   vm.setSequence = function(seq, step, val, i) {
     if (i) {
       vm.sequence[seq][step][i] = val;
@@ -193,90 +131,16 @@ function MainCtrl
   }
 
   vm.initSequence2 = function() {
-  	vm.sequence[0].globe[0] = true;
-    vm.mapVisible = true;
   	return $timeout(angular.noop, 1000).then(function() {
       s.video.blurred = true;
-  		vm.sequence[0].globe[1] = true;
 	  });
   }
 
-  function ticker(start, end, increment, interval, tick) {
-    var counter = start;
-    var token = setInterval(function(){
-      if (counter >= end) {
-        clearInterval(token);
-      } else {
-        counter = counter + increment;
-        tick(counter);
-        // console.log(counter);
-      }
-    }, interval);
-    return token;
-  }
-
-  vm.captureUserLocation = function() {
-    s.userLocation.locating = true;
-    var token = ticker(-90, 90, 1, 60, function(counter) {
-
-      $scope.$apply(function(){
-        vm.map.center = { 
-          latitude: 45,
-          longitude: counter
-        };
-      });
-
-    });
-
-    GeolocationService
-    .getCurrentPosition()
-    .then(function(data){
-      s.userLocation.locating = false;
-      s.userLocation.allowed = true;
-      s.userLocation.coords = [data.coords.latitude, data.coords.longitude];
-      vm.map.center = { 
-        latitude: data.coords.latitude,
-        longitude: data.coords.longitude
-      };
-
-      //console.log(data, s.userLocation);
-      clearInterval(token);
-		  vm.initSequence3();
-
-  	}, function(error) {
-		  s.userLocation = {
-        locating: false,
-		  	allowed: false,
-		  	coords: polonsky,
-        error: error
-		  };
-      clearInterval(token);
-  	});
-  }
-
   vm.initSequence3 = function() {
-
-      // vm.map.zoom = 4;
-      // vm.sequence[0].globe[1] = false;
-      // vm.sequence[0].globe[2] = true;
-      // s.video.blurred = false;
-      // return $timeout(angular.noop, 1000).then(function(){
-      //   vm.sequence[0].location = true;
-      //   vm.mapVisible = !s.mobile;
-      //   mapApi.event.trigger(mapRef, 'resize');
-      //   return $timeout(angular.noop, 1000);
-      // }).then(function(){
-        scrollTo(angular.element(document.getElementById('welcome')), 0, 2000, easings.easeOutCirc);
-        // return $timeout(angular.noop, 2000);
-      $timeout(angular.noop, 2000).then(function() {
-     //    mapApi.event.trigger(mapRef, 'resize');
-		  	// vm.map.zoom = 17;
-     //    vm.map.center = { 
-     //      latitude: polonsky[0],
-     //      longitude: polonsky[1]
-     //    };
-        vm.sequence[1].init = true;
-		  });
+    scrollTo(angular.element(document.getElementById('welcome')), 0, 2000, easings.easeOutCirc);
+    $timeout(angular.noop, 2000).then(function() {
+      vm.sequence[1].init = true;
+	  });
   }
 
   var storedChecklist2 = store.get('section2months');
@@ -321,6 +185,7 @@ function MainCtrl
       }
     }
   }
+
   vm.facultyList = DatastoreService.get('facultyList');
   slugifyNodes(vm.facultyList, 'name');
   vm.smartstartList = DatastoreService.get('smartstartList');
@@ -345,75 +210,6 @@ function MainCtrl
     if ($inview && $inviewpart == 'both') {
       vm.activeBg = $index;
     }
-  }
-
-  vm.attachMap = function($inview, $inviewpart) {
-    if ($inview === true) {
-    $scope.video.visible = true;
-      if (!vm.map.static && $inview && $inviewpart == 'bottom') {
-        vm.map.static = true;
-        vm.mapMarkers = [];
-        vm.markerOptions = { animation: mapApi.Animation.DROP, icon: 'images/icons/marker_alt.svg' };
-          //mapApi.event.trigger(mapRef, 'resize');
-        return $timeout(angular.noop, 100).then(function(){
-          vm.map.zoom = 1;
-          //mapApi.event.trigger(mapRef, 'resize');
-          return $timeout(angular.noop, 1000);
-        }).then(function(){
-          mapApi.event.trigger(mapRef, 'resize');
-          vm.map.zoom = 2;
-          vm.map.center = { 
-            latitude: s.userLocation.coords[0],
-            longitude: s.userLocation.coords[1]
-          };
-          vm.mapMarkers.push(s.userLocation);
-          return $timeout(angular.noop, 1000);
-        }).then(function() {
-          $http({
-            method: 'GET',
-            url: 'http://admissions.uoit.ca/nextsteps/_db.php'
-          }).then(function(response) {
-            //console.log(response.data);
-            angular.forEach(response.data, function(v) {
-              vm.mapMarkers.push(v);
-            });
-          }, function(response) {
-            console.log(response);
-          });
-        });
-      }
-    }
-  }
-  
-  var addedLocation = store.get('addedLocation');
-  vm.addedLocation = addedLocation ? addedLocation : false;
-  s.addLocation = function(noname = false) {
-    vm.addedLocation = 'locating';
-    var post = {
-      allowed: true,
-      lat: s.userLocation.coords[0],
-      lng: s.userLocation.coords[1],
-      date: s.userLocation.date
-    }
-    if (!noname) {
-      post.name = s.userLocation.name;
-    }
-    $http({
-      method: 'POST',
-      url: 'http://admissions.uoit.ca/nextsteps/_db.php',
-      data: post
-    }).then(function(response) {
-      vm.addedLocation = true;
-      console.log(response);
-      //store.set('addedLocation', true);
-    }, function() {
-      vm.addedLocation = 'failed';
-    });
-  }
-  s.removeMarker = function() {
-    vm.mapMarkers.splice(0, 1);
-    s.userLocation.allowed = false;
-    vm.addedLocation = true;
   }
 
 }
