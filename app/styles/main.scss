@@ -125,10 +125,6 @@ label small {
 	  			margin: 0;
 	  		}
   		}
-  		ul > li {
-	  		padding: 0.25rem 0.5rem;
-	  		border-left: solid 3px $uoitlightblue;
-  		}
   		.list-icon {
   			@include center(y);
 	  		transition: 0.3s;
@@ -164,7 +160,7 @@ label small {
 	}
 }
 
-.block-list {
+ul.block-list {
 	margin-left: 0;
 	list-style: none;
   li {
