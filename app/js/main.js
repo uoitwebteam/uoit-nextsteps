@@ -6,14 +6,13 @@ import onConfig  from './on_config';
 import onRun     from './on_run';
 
 // dependencies
-import 'angular-sanitize';
-import 'angular-cookies';
-import 'angular-storage';
-import 'angular-scroll';
-import 'angular-inview';
-import 'angular-simple-logger';
-import 'angular-ui-router';
+import ngSanitize from 'angular-sanitize';
+import ngCookies from 'angular-cookies';
+import ngStorage from 'angular-storage';
+import duScroll from 'angular-scroll';
+import uiRouter from 'angular-ui-router';
 import 'angular-responsive-images/src/angular-responsive-images';
+import 'angular-inview';
 
 // app components
 import './templates';
@@ -26,20 +25,18 @@ import { ParallaxModule } from '../components/parallax/parallax';
 
 // create and bootstrap application
 const requires = [
-	'ngSanitize',
-  'ngCookies',
-  'angular-storage',
+	ngSanitize,
+  ngCookies,
+  ngStorage,
+  duScroll,
+  uiRouter,
 	'angular-inview',
-  'duScroll',
   'bhResponsiveImages',
-  'ui.router',
   'templates',
   'app.filters',
   'app.controllers',
   'app.services',
-  'app.directives'
-  'app.directives',
-  ChecklistModule
+  ChecklistModule,
   ParallaxModule
 ];
 
