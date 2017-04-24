@@ -47,24 +47,6 @@ function MainCtrl
     s.mobile = true;
   }
 
-  s.alert = {
-    active: false,
-    shown: false,
-    show: function() {
-      if (!this.active) {
-        var self = this;
-        self.active = true;
-        self.shown = true;
-        return $timeout(angular.noop, 5000).then(function() {
-          self.active = false;
-        });
-      }
-    },
-    close: function() {
-      this.active = false;
-    }
-  }
-
   var easings = {
     easeOutCirc: function(t) { const t1 = t - 1; return Math.sqrt( 1 - t1 * t1 ); }
   }
@@ -114,28 +96,26 @@ function MainCtrl
   	if (vm.sequence[0].init === false) {
 			vm.sequence[0].init = true;
 			vm.sequence[0].logo = true;
-			return $timeout(angular.noop, 2000).then(function() {
+			return $timeout(() => {
 				vm.sequence[0].logo = false;
 				vm.sequence[0].heading = true;
-		    return $timeout(angular.noop, 1000);
-		  }).then(function() {
+			}, 2000).then(() => $timeout(() => {
 	  		vm.sequence[0].cta = true;
-		    return $timeout(angular.noop, 120 * 1000);
-		  });
+	  	}, 1000));
   	}
   }
 
   vm.initSequence2 = function() {
-  	return $timeout(angular.noop, 1000).then(function() {
+  	return $timeout(() => {
       s.video.blurred = true;
-	  });
+	  }, 1000);
   }
 
   vm.initSequence3 = function() {
     scrollTo(angular.element(document.getElementById('welcome')), 0, 2000, easings.easeOutCirc);
-    $timeout(angular.noop, 2000).then(function() {
+    return $timeout(() => {
       vm.sequence[1].init = true;
-	  });
+	  }, 2000);
   }
 
   const storedChecklist2 = store.get(vm.checklistNames.section2);
