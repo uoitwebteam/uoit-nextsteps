@@ -20,9 +20,9 @@ import './templates';
 import './filters';
 import './controllers';
 import './services';
-import './directives';
 
 import { ChecklistModule } from '../components/checklist/checklist';
+import { ParallaxModule } from '../components/parallax/parallax';
 
 // create and bootstrap application
 const requires = [
@@ -40,6 +40,7 @@ const requires = [
   'app.directives'
   'app.directives',
   ChecklistModule
+  ParallaxModule
 ];
 
 // mount on window for testing

@@ -1,4 +1,4 @@
-function parallaxBackground($window) {
+export const ParallaxBgDirective = function($window) {
   'ngInject';
 
   return {
@@ -27,8 +27,3 @@ function parallaxBackground($window) {
     }  // link function
   };
 }
-
-export default {
-  name: 'parallaxBackground',
-  fn: parallaxBackground
-};

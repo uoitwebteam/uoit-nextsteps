@@ -1,4 +1,4 @@
-function parallax($window) {
+export const ParallaxDirective = function($window) {
   'ngInject';
 
   return {
@@ -26,8 +26,3 @@ function parallax($window) {
     }  // link function
   };
 }
-
-export default {
-  name: 'parallax',
-  fn: parallax
-};
