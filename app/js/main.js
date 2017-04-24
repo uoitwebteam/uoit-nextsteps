@@ -22,6 +22,8 @@ import './controllers';
 import './services';
 import './directives';
 
+import { ChecklistModule } from '../components/checklist/checklist';
+
 // create and bootstrap application
 const requires = [
 	'ngSanitize',
@@ -36,6 +38,8 @@ const requires = [
   'app.controllers',
   'app.services',
   'app.directives'
+  'app.directives',
+  ChecklistModule
 ];
 
 // mount on window for testing

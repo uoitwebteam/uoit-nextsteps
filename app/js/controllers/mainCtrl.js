@@ -11,14 +11,9 @@ function MainCtrl
   const date = new Date();
   s.level = $stateParams.l == 105 ? 105 : 101;
 
-  s.userLocation = {
-    code: 'user',
-    locating: false,
-    allowed: null,
-    coords: polonsky,
-    date: date,
-    name: '',
-    place: ''
+  vm.checklistNames = {
+  	section2: 'section2months',
+  	section3: 'section3months'
   };
 
   s.video = {
@@ -143,18 +138,18 @@ function MainCtrl
 	  });
   }
 
-  var storedChecklist2 = store.get('section2months');
-  var storedChecklist3 = store.get('section3months');
-  vm.section2months = DatastoreService.get('section2months');
-  vm.section3months = DatastoreService.get('section3months');
+  const storedChecklist2 = store.get(vm.checklistNames.section2);
+  const storedChecklist3 = store.get(vm.checklistNames.section3);
+  vm[vm.checklistNames.section2] = DatastoreService.get(vm.checklistNames.section2);
+  vm[vm.checklistNames.section3] = DatastoreService.get(vm.checklistNames.section3);
 
   if (storedChecklist2) {
     angular.forEach(storedChecklist2, function(val, key){
       var month = key;
       angular.forEach(val.points, function(v, k){
         var point = k;
-        if (v && v.hasOwnProperty('complete') && vm.section2months[month].points[point]) {
-          vm.section2months[month].points[point].complete = v.complete;
+        if (v && v.hasOwnProperty('complete') && vm[vm.checklistNames.section2][month].points[point]) {
+          vm[vm.checklistNames.section2][month].points[point].complete = v.complete;
         }
       });
     });
@@ -164,26 +159,11 @@ function MainCtrl
       var month = key;
       angular.forEach(val.points, function(v, k){
         var point = k;
-        if (v && v.hasOwnProperty('complete') && vm.section3months[month].points[point]) {
-          vm.section3months[month].points[point].complete = v.complete;
+        if (v && v.hasOwnProperty('complete') && vm[vm.checklistNames.section3][month].points[point]) {
+          vm[vm.checklistNames.section3][month].points[point].complete = v.complete;
         }
       });
     });
-  }
-
-  vm.checklist = {
-    total: 9,
-    count: 0,
-    toggle: function(state) {
-      s.alert.show();
-      store.set('section2months', vm.section2months);
-      store.set('section3months', vm.section3months);
-      if (state === false) {
-        this.count--;
-      } else {
-        this.count++;
-      }
-    }
   }
 
   vm.facultyList = DatastoreService.get('facultyList');

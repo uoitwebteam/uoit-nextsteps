@@ -13,36 +13,8 @@
 			<p>Here are the steps you need to complete to be ready for class in September. <strong>Check off steps as you complete them and come back later to see your progress!</strong></p>
 			<p ng-if="level==105" class="important"><span class="ion-asterisk"></span> Make sure to accept your offer of admission by the date specified in your offer letter!</p>
 		</div>
-		<div class="list-container">
-			<div ng-repeat="month in ::home.section2months">
-				<h2 class="animated"
-					in-view="month.show = $inview"
-					in-view-options="{offsetTop: 50, offsetBottom: -50}"
-					ng-class="{'fadeOutLeft' : !month.show, 'fadeInLeft' : month.show}">
-					{{ ::month.month }}
-				</h2>
-				<ul>
-			  	<li ng-repeat="point in ::month.points" class="animated"
-			  		ng-if="!point.level||point.level==level"
-						in-view="point.show = $inview"
-						in-view-options="{offsetTop: 50, offsetBottom: -50}"
-						ng-class="{'fadeOutLeft' : !point.show, 'fadeInLeft' : point.show }">
-			  			<label>
-			  				<input type="checkbox" name="checklist" ng-model="point.complete" ng-change="home.checklist.toggle(point.complete)"></input>
-			  				<span class="indicator"></span>
-			  				<span ng-bind-html="::point.text"></span>
-			  			</label>
-			  			<span ng-if="::point.highlight.icon" class="list-icon {{ ::point.highlight.icon }}"></span>
-			  	</li>
-				</ul>
-			</div>
-		</div>
+
+		<checklist list-name="{{ ::home.checklistNames.section2 }}" list-items="home[home.checklistNames.section2]"></checklist>
+		
 	</div>
-<!-- 	<aside class="info-banner animated fadeIn" ng-if="!mobile&&!home.map.static&&home.mapMarkers">
-		<h3><span class="ion-information-circled animated fadeInRight"></span> Points of interest</h3>&nbsp;<small>See more <span class="ion-chevron-down"></span></small>
-		<dl ng-if="!home.map.static">
-      <dt ng-repeat-start="marker in home.mapMarkers" class="animated fadeInRight">{{ marker.name }}</dt>
-      <dd ng-repeat-end ng-bind-html="marker.desc" class="animated fadeInRight"></dd>
-    </dl>
-	</aside> -->
 </section>
