@@ -18,34 +18,37 @@ function MainCtrl
 
   s.video = {
     visible: false,
-    blurred: false,
     sources: {
-      p480: [
-        ['images/NextSteps_480p.webm', 'video/webm'],
-        ['images/NextSteps_480p.mp4', 'video/mp4']
-      ],
-      p720: [
-        ['images/NextSteps_720p.webm', 'video/webm'],
-        ['images/NextSteps_720p.mp4', 'video/mp4']
-      ]
-    },
-    addSources: function(res) {
-      var source = document.createElement('source');
-      source.src = this.sources[res][0][0];
-      source.type = this.sources[res][0][1];
-      document.getElementById('bgVid').appendChild(source);
+      p480: [{
+      	src: 'images/NextSteps_480p.webm',
+      	type: 'video/webm'
+      },{
+      	src: 'images/NextSteps_480p.mp4',
+      	type: 'video/mp4'
+      }],
+      p720: [{
+      	src: 'images/NextSteps_720p.webm',
+      	type: 'video/webm'
+      },{
+      	src: 'images/NextSteps_720p.mp4',
+      	type: 'video/mp4'
+      }],
+      fallback: 'images/UA_Link_low.gif' 
     }
   }
 
-  if ($window.matchMedia('(min-width: 1920px)').matches) {
-    s.video.addSources('p720');
-    s.mobile = false;
-  } else if ($window.matchMedia('(min-width: 768px)').matches) {
-    s.video.addSources('p480');
-    s.mobile = false;
-  } else {
-    s.mobile = true;
-  }
+  $scope.$watch(() => {
+	  if ($window.matchMedia('(min-width: 1920px)').matches) {
+	    return 1920;
+	  } else if ($window.matchMedia('(min-width: 768px)').matches) {
+	    return 768;
+	  } else {
+	    return 0;
+	  }
+  }, value => {
+    s.mobile = (value === 0);
+    vm.sources = (value === 1920) ? s.video.sources.p720 : s.video.sources.p480;
+  });
 
   var easings = {
     easeOutCirc: function(t) { const t1 = t - 1; return Math.sqrt( 1 - t1 * t1 ); }
@@ -103,12 +106,6 @@ function MainCtrl
 	  		vm.sequence[0].cta = true;
 	  	}, 1000));
   	}
-  }
-
-  vm.initSequence2 = function() {
-  	return $timeout(() => {
-      s.video.blurred = true;
-	  }, 1000);
   }
 
   vm.initSequence3 = function() {

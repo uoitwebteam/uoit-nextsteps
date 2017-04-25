@@ -21,6 +21,7 @@ import './controllers';
 import './services';
 
 import { ChecklistModule } from '../components/checklist/checklist';
+import { BgVideoModule } from '../components/bg-video/bg-video';
 import { ParallaxModule } from '../components/parallax/parallax';
 
 // create and bootstrap application
@@ -37,6 +38,7 @@ const requires = [
   'app.controllers',
   'app.services',
   ChecklistModule,
+  BgVideoModule,
   ParallaxModule
 ];
 

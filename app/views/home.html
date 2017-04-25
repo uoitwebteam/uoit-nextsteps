@@ -1,10 +1,4 @@
-<video autoplay loop class="bg-element"	ng-show="video.visible"
-  ng-class="{ 'blurred' : video.blurred, 'animated fadeIn' : video.visible }" id="bgVid">
-<!--   <source src="images/UA_Link_720p.webm">
-  <source src="images/UA_Link_720p.mp4"> -->
-</video>
-
-<img src="images/UA_Link_low.gif" alt="" class="bg-element" ng-if="mobile" />
+<bg-video visible="video.visible" mobile="mobile" sources="home.sources" fallback="{{ ::video.sources.fallback }}"></bg-video>
 
 <button class="nav-btn" ng-click="home.navMenu.toggle()" ng-class="{'open': home.navMenu.open}"><span class="icon icon_menu"></span> Menu</button>
 <nav class="section-nav" ng-class="{'open': home.navMenu.open}">
