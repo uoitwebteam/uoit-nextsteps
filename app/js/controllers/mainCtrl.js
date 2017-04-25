@@ -13,7 +13,9 @@ function MainCtrl
 
   vm.checklistNames = {
   	section2: 'section2months',
-  	section3: 'section3months'
+  	section3: 'section3months',
+  	section4: 'facultyList',
+  	section5: 'smartstartList'
   };
 
   s.video = {
@@ -143,9 +145,9 @@ function MainCtrl
     });
   }
 
-  vm.facultyList = DatastoreService.get('facultyList');
+  vm.facultyList = DatastoreService.get(vm.checklistNames.section4);
   slugifyNodes(vm.facultyList, 'name');
-  vm.smartstartList = DatastoreService.get('smartstartList');
+  vm.smartstartList = DatastoreService.get(vm.checklistNames.section5);
 
   vm.attachHeader = function($inview, $inviewpart) {
     if ($inview === true) {
