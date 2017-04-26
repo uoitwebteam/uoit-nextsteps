@@ -11,7 +11,7 @@
 	</ul>
 	<div class="list-container">
 		<ul>
-			<li class="cal-item animated" ng-repeat="faculty in ::home.smartstartList"
+			<li class="cal-item animated" ng-repeat="faculty in ::$ctrl.smartstartList"
 				in-view="faculty.show = $inview"
 				in-view-options="{offsetTop: 50, offsetBottom: -50}"
 				ng-class="{'flipOutX' : !faculty.show, 'flipInX' : faculty.show }">

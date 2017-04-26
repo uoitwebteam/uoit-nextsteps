@@ -1,6 +1,5 @@
 export const AppComponent = {
   restrict: 'E',
-  controllerAs: 'home',
   templateUrl: 'app.component.html',
   controller: class AppController {
   	constructor($window, $scope, $stateParams, $timeout, $document, $http, DatastoreService, ConfigstoreService, store) {

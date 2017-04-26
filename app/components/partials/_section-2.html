@@ -2,20 +2,20 @@
 	<div class="text-container">
 		<div class="text-container-content">
 		<h1 class="animated"
-			in-view="$inview&&home.setSequence(1, 'title', $inview)"
+			in-view="$inview&&$ctrl.setSequence(1, 'title', $inview)"
 			in-view-options="{offsetTop: 50, offsetBottom: -50}"
-			ng-class="{'fadeOutLeft' : !home.sequence[1].title, 'fadeInLeft' : home.sequence[1].title}">
+			ng-class="{'fadeOutLeft' : !$ctrl.sequence[1].title, 'fadeInLeft' : $ctrl.sequence[1].title}">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 105" class="svg-text"><defs><style>.cls-1{font-size:87.62px;fill:#0077ca;font-family:franklin_gothic_fscondensed;}.cls-2{letter-spacing:-4px;}.cls-3{letter-spacing:-1px;}.cls-4{font-size:41.78px;fill:#003c71;}.cls-5{letter-spacing:-2px;}</style></defs><title>Untitled-3</title><text class="cls-1" transform="translate(0 60.87)">WELCOME<tspan class="cls-2" x="329.96" y="0"> </tspan><tspan class="cls-3" x="347.49" y="0">T</tspan><tspan x="377.1" y="0">O UOIT</tspan><tspan class="cls-4"><tspan x="0" y="41.2">F</tspan><tspan class="cls-3" x="17.09" y="41.2">R</tspan><tspan x="37.39" y="41.2">OM</tspan><tspan class="cls-5" x="89.36" y="41.2"> </tspan><tspan x="97.72" y="41.2">THE REGISTRAR’S OFFICE S</tspan>TAFF!</tspan></text></svg>
 			<span class="svg-text-alternative">WELCOME TO UOIT FROM THE REGISTRAR’S OFFICE STAFF!</span>
 		</h1>
 		<div class="animated"
-			ng-class="{'fadeOutLeft' : !home.sequence[1].title, 'fadeInLeft' : home.sequence[1].title}">
+			ng-class="{'fadeOutLeft' : !$ctrl.sequence[1].title, 'fadeInLeft' : $ctrl.sequence[1].title}">
 			<p>We will be assisting you all the way to graduation with information about registration, financial aid and student awards.</p>
 			<p>Here are the steps you need to complete to be ready for class in September. <strong>Check off steps as you complete them and come back later to see your progress!</strong></p>
 			<p ng-if="level==105" class="important"><span class="ion-asterisk"></span> Make sure to accept your offer of admission by the date specified in your offer letter!</p>
 		</div>
 
-		<checklist list-name="{{ ::home.checklistNames.section2 }}" list-items="home[home.checklistNames.section2]" level="{{ ::home.level }}"></checklist>
+		<checklist list-name="{{ ::$ctrl.checklistNames.section2 }}" list-items="$ctrl[$ctrl.checklistNames.section2]" level="{{ ::$ctrl.level }}"></checklist>
 		
 	</div>
 </section>

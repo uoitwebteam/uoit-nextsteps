@@ -1,11 +1,11 @@
-<section class="section-4" in-view="home.sequence[3].unattach = $inview;" id="ibegin">
+<section class="section-4" in-view="$ctrl.sequence[3].unattach = $inview;" id="ibegin">
 	<article>
 		<h2><span class="ibegin">iBEGIN</span> is the first part of your orientation to UOIT.</h2>
 		<p>This event is designed to promote your academic and personal success. You will have the opportunity to meet classmates, faculty and staff; learn strategies for attending lectures; and discuss how to make the most of your university experience.</p>
 	</article>
 	<div class="faculty-list">
 		<ul>
-			<li class="animated" ng-repeat="fac in ::home.facultyList"
+			<li class="animated" ng-repeat="fac in ::$ctrl.facultyList"
 				in-view="fac.show = $inview; $inview&&updateBg($inview, $inviewpart, $index);"
 				in-view-options="{offsetTop: 300, offsetBottom: -200}"
 				ng-class="{'fadeOutLeft' : !fac.show, 'fadeInLeft' : fac.show }">
@@ -18,9 +18,9 @@
 			</li>
 		</ul>
 	</div>
-<img ng-repeat="fac in ::home.facultyList"
+<img ng-repeat="fac in ::$ctrl.facultyList"
 	bh-src-responsive="[ [ 'default', 'images/768/'+fac.image ], [ 'small', 'images/1280/'+fac.image ], [ 'medium', 'images/1920/'+fac.image ] ]"
 	src="images/768/{{ ::fac.image }}" class="bg-element animated"
-	ng-show="home.activeBg == $index"
-	ng-class="{'fadeIn' : home.activeBg == $index && !fac.nocover, 'fadeInPano' : fac.nocover && home.activeBg == $index, 'no-cover' : fac.nocover }" />
+	ng-show="$ctrl.activeBg == $index"
+	ng-class="{'fadeIn' : $ctrl.activeBg == $index && !fac.nocover, 'fadeInPano' : fac.nocover && $ctrl.activeBg == $index, 'no-cover' : fac.nocover }" />
 </section>
