@@ -49,8 +49,8 @@ export default {
 
   views: {
     index: 'app/index.html',
-    src: 'app/views/**/*.html',
-    dest: 'app/js'
+    src: 'app/components/**/*.html',
+    dest: 'app/components/common'
   },
 
   gzip: {

@@ -10,9 +10,6 @@ import uiRouter from 'angular-ui-router';
 import 'angular-responsive-images/src/angular-responsive-images';
 import 'angular-inview';
 
-// app components
-import '../js/templates';
-
 import { PageSectionModule } from './page-section/page-section';
 import { ChecklistModule } from './checklist/checklist';
 import { BgVideoModule } from './bg-video/bg-video';
@@ -30,7 +27,6 @@ const requires = [
   uiRouter,
 	'angular-inview',
   'bhResponsiveImages',
-  'templates',
   PageSectionModule,
   ChecklistModule,
   BgVideoModule,
