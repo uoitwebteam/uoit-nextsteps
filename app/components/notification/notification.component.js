@@ -1,14 +1,5 @@
 export const NotificationComponent = {
-  template: `<div class="alert-wrapper"> 
-			<div class="alert-msg animated" ng-class="{ 'fadeInUp': $ctrl.active, 'fadeOutDown': !$ctrl.active && $ctrl.shown }">
-				<span class="ion-checkmark-circled"></span>
-				<div class="msg">
-					Your progress has been saved!<br/>
-					<small>Keep checking back and checking things off so you never forget your <strong>next steps!</strong></small>
-					<a class="close-btn ion-close" ng-click="$ctrl.close()"></a>
-				</div>
-			</div>
-		</div>`,
+  templateUrl: 'notification/notification.component.html',
 	controller: class NotificationController {
 		constructor($rootScope, $timeout) {
 		  'ngInject';

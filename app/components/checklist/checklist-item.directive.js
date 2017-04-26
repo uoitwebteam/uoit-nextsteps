@@ -8,10 +8,6 @@ export const ChecklistItemDirective = function() {
 	  bindToController: true,
 	  controllerAs: '$ctrl',
 	  controller() {},
-	  template: `<label>
-				<input type="checkbox" ng-model="$ctrl.item.complete" ng-change="$ctrl.onToggle()"></input>
-				<span class="indicator"></span>
-				<span ng-bind-html="::$ctrl.item.text"></span>
-			</label>`
+	  templateUrl: 'checklist/checklist-item.directive.html'
 	}
 }
