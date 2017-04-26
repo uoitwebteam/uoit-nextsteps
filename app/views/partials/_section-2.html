@@ -15,7 +15,7 @@
 			<p ng-if="level==105" class="important"><span class="ion-asterisk"></span> Make sure to accept your offer of admission by the date specified in your offer letter!</p>
 		</div>
 
-		<checklist list-name="{{ ::home.checklistNames.section2 }}" list-items="home[home.checklistNames.section2]"></checklist>
+		<checklist list-name="{{ ::home.checklistNames.section2 }}" list-items="home[home.checklistNames.section2]" level="{{ ::home.level }}"></checklist>
 		
 	</div>
 </section>

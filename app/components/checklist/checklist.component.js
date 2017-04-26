@@ -1,5 +1,6 @@
 export const ChecklistComponent = {
   bindings: {
+  	level: '@',
   	listName: '@',
   	listItems: '<'
   },
@@ -13,7 +14,7 @@ export const ChecklistComponent = {
 				</h2>
 				<ul>
 			  	<li ng-repeat="point in ::item.points" class="animated"
-			  		ng-if="!point.level||point.level==level"
+			  		ng-if="!point.level || point.level == $ctrl.level"
 						in-view="point.show = $inview"
 						in-view-options="{ offsetTop: 50, offsetBottom: -50 }"
 						ng-class="{'fadeOutLeft' : !point.show, 'fadeInLeft' : point.show }">

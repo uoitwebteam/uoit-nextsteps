@@ -9,7 +9,7 @@ export const AppComponent = {
 		  const s = $scope;
 		  const polonsky = [43.945127,-78.89683];
 		  const date = new Date();
-		  s.level = $stateParams.l == 105 ? 105 : 101;
+		  vm.level = $stateParams.l == 105 ? 105 : 101;
 
 		  vm.checklistNames = {
 		  	section2: 'section2months',
