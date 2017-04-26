@@ -173,7 +173,7 @@ export const AppComponent = {
 		  }
 		}
   },
-  template: `
+  template: `<div class="main-container">
   	<bg-video visible="video.visible" mobile="mobile" sources="home.sources" fallback="{{ ::video.sources.fallback }}"></bg-video>
 		<button class="nav-btn" ng-click="home.navMenu.toggle()" ng-class="{'open': home.navMenu.open}"><span class="icon icon_menu"></span> Menu</button>
 		<nav class="section-nav" ng-class="{'open': home.navMenu.open}">
@@ -201,5 +201,5 @@ export const AppComponent = {
 		<ng-include src="'partials/_section-6.html'"></ng-include>
 		<ng-include src="'partials/_section-7.html'"></ng-include>
 		<ng-include src="'partials/_section-8.html'"></ng-include>
-		<notification></notification>`
+		<notification></notification></div>`
 };
