@@ -123,43 +123,43 @@ export class DatastoreService {
 	    // 
 	    section3months: [{ 
 	      show: false,
+	      month: 'June',
+	      points: [{ 
+          text: 'Sign up for your faculty-specific Smart Start program. Registration opens Friday, June 30.',
+          complete: false,
+          show: false
+        }]
+	    }, { 
+	      show: false,
 	      month: 'July',
 	      points: [{ 
-	          text: 'Sign up for your faculty-specific Smart Start program. Registration opens Friday, July 1.',
-	          complete: false,
-	          show: false
-	        }, {
-	        	text: '<a href="http://studentlife.uoit.ca/student-experience-centre/peermentoring/student-profile.php" title="Open Mentorship registration form" target="_blank">Sign up for UOIT Student Mentorship</a>! You’ll be matched with an upper-year peer mentor from your faculty and receive guidance as you enter your first year! Our mentors have a variety of unique experiences (e.g. first generation, mature, international and/or transfer students) and involvement on campus that they are ready to share with you!',
-	        	complete: false,
-	        	show: false
-	        }]
+          text: 'Attend your faculty-specific iBegin orientation (July 26 to August 4).',
+          complete: false,
+          show: false
+	      }]
 	    }, {
 	      show: false,
 	      month: 'August',
 	      points: [{ 
-	          text: 'Attend your faculty-specific iBegin orientation (August 15 to 19).',
-	          complete: false,
-	          show: false
-		      },{ 
-	          text: 'Attend your faculty-specific Smart Start program (August 18 to 31).',
-	          complete: false,
-	          show: false
-	        },{ 
-	          text: 'Student Accessibility Services hosts transition evening for parents (August 22) and Summer Transition Program (August 23 to 25).',
-	          complete: false,
-	          show: false
+          text: 'Attend your faculty-specific Smart Start program (August 21 to 31).',
+          complete: false,
+          show: false
+        },{ 
+          text: 'Student Accessibility Services hosts transition evening for parents (August 21) and Summer Transition Program (August 28 to September 1).',
+          complete: false,
+          show: false
 	      }]
 	    }, {
 	      show: false,
 	      month: 'September',
 	      points: [{ 
-	          text: 'Faculty-specific Smart Start programs continue (September 1 and 2).',
-	          complete: false,
-	          show: false
-	        },{ 
-	          text: 'Attend September orientation and meet new friends on September 6 and 7.',
-	          complete: false,
-	          show: false
+          text: 'Faculty-specific Smart Start programs continue (August 31 to September 1).',
+          complete: false,
+          show: false
+        },{ 
+          text: 'Attend September orientation and meet new friends on Tuesday, September 5 and Wednesday, September 6.',
+          complete: false,
+          show: false
 	      }]
 	    }],
 	    // iBEGIN FACULTY LIST
@@ -213,8 +213,7 @@ export class DatastoreService {
 	    smartstartList: [{
 	      fac: [f.bit, '#00558C'],
 	      dates: [
-	        'Thursday, August 18 and Friday, August 19',
-	        'Thursday, August 25 and Friday, August 26'
+	        'Monday, August 21 and Monday, August 29'
 	      ],
 	      show: false
 	    },{
@@ -222,24 +221,26 @@ export class DatastoreService {
 	      fac2: [f.eas, '#5F259F'],
 	      fac3: [f.sci, '#007749'],
 	      dates: [
-	        'Monday, August 22 and Tuesday, August 23',
-	        'Wednesday, August 24',
-	        'Monday, August 29 and Tuesday, August 30',
-	        'Wednesday, August 31 and Thursday, September 1',
-	        'Friday, September 2'
+	        'Wednesday, August 9 and Thursday, August 10',
+	        'Monday, August 14 and Tuesday, August 15',
+	        'Wednesday, August 16 and Thursday, August 17',
+	        'Monday, August 21 and Tuesday, August 22',
+	        'Wednesday, August 23 and Thursday, August 24',
+	        'Tuesday, August 29 and Wednesday, August 30',
+	        'Thursday, August 31 and Friday, September 1'
 	      ],
 	      show: false
 	    },{
 	      fac: [f.hs, '#AF272F'],
 	      dates: [
-	        'Wednesday, August 24 (bridging students)',
-	        'Monday, August 29 (first-year students)'
+	        'Tuesday, August 22 (bridging students)',
+	        'Monday, August 28 (first-year students)'
 	      ],
 	      show: false
 	    },{
 	      fac: [f.ssh, '#BE4D00'],
 	      dates: [
-	        'Monday, August 22'
+	        'Wednesday, August 23 and Wednesday, August 30'
 	      ],
 	      show: false
 	    }]

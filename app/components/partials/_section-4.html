@@ -1,7 +1,7 @@
 <section class="section-4" in-view="$ctrl.sequence[3].unattach = $inview;" id="ibegin">
 	<article>
-		<h2><span class="ibegin">iBEGIN</span> is the first part of your orientation to UOIT.</h2>
-		<p>This event is designed to promote your academic and personal success. You will have the opportunity to meet classmates, faculty and staff; learn strategies for attending lectures; and discuss how to make the most of your university experience.</p>
+		<h2><span class="ibegin">iBEGIN</span> is the first part of your orientation at the University.</h2>
+		<p>The event is designed to promote your academic and personal success. You will have the opportunity to meet classmates, faculty and staff; learn strategies for attending lectures; and discuss how to make the most of your university experience.</p>
 	</article>
 	<div class="faculty-list">
 		<ul>
@@ -14,7 +14,7 @@
 					<span ng-style="::{ color: fac.color }"><span ng-if="!fac.nocover">Faculty of&nbsp;</span><span ng-bind-html="::fac.name"></span></span>
 					<span ng-if="::fac.name2" ng-style="::{ color: fac.color2 }" id="{{ ::fac.anchor2 }}"><br/>Faculty of {{ ::fac.name2 }}</span>
 				</h3>
-				<a href="https://studentlife.uoit.ca/student-experience-centre/orientation/ibegin.php" class="button" target="_blank">Register for <span class="ibegin">iBEGIN</span> <span class="ion-chevron-right"></span></a>
+				<a ng-href="https://studentlife.uoit.ca/student-experience-centre/orientation/ibegin.php?utm_source=nextsteps&utm_medium=web&utm_campaign=ibegin_{{ ::fac.anchor }}" class="button" target="_blank">Register for <span class="ibegin">iBEGIN</span> <span class="ion-chevron-right"></span></a>
 			</li>
 		</ul>
 	</div>
