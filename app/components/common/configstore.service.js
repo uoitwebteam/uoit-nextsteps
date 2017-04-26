@@ -16,7 +16,7 @@ export class ConfigstoreService {
 	    // 
 	    // 
 	    navMenu: {
-	      nodes: [{
+	      items: [{
 	        title: 'Welcome',
 	        icon: 'icon icon_mapmarker',
 	        active: false
@@ -27,7 +27,7 @@ export class ConfigstoreService {
 	      },{
 	        title: 'iBegin',
 	        icon: 'icon icon_megaphone',
-	        nodes: [{
+	        items: [{
 	          title: f.sci,
 	          icon: 'icon icon_microscope',
 	          active: false
@@ -71,10 +71,6 @@ export class ConfigstoreService {
 	        active: false
 	      }],
 	      active: false,
-	      open: false,
-	      toggle: function() {
-	        this.open = !this.open;
-	      },
 	      slugify: function(s) {
 	        if (!s) return '';
 	        s = s.replace(/[^\w\s-]/g, '').trim().toLowerCase();

@@ -1,0 +1,18 @@
+<button class="nav-btn" ng-click="$ctrl.open = !$ctrl.open" ng-class="{'open': $ctrl.open}"><span class="icon icon_menu"></span> Menu</button>
+<nav class="section-nav" ng-class="{'open': $ctrl.open}">
+	<ul class="top-list" ng-class="{'active': $ctrl.active}">
+		<li ng-repeat="item in ::$ctrl.items" du-scrollspy="{{ ::item.anchor }}">
+			<a href="#{{ ::item.anchor }}" title="Jump to {{ ::item.title }} section"  du-smooth-scroll ng-click="$ctrl.open = false">
+				<span class="{{ ::item.icon }}"></span> {{ ::item.title }}
+			</a>
+			<span class="smart-start" ng-if="item.items">Faculty of...</span>
+			<ul ng-if="item.items" du-spy-context>
+				<li ng-repeat="subitem in ::item.items" du-scrollspy="{{ ::subitem.anchor }}" offset="200">
+					<a href="#{{ ::subitem.anchor }}" title="Jump to {{ ::subitem.title }} section" du-smooth-scroll ng-click="$ctrl.open = false">
+						<span class="{{ ::subitem.icon }}"></span> {{ ::subitem.title }}
+					</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</nav>

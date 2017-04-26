@@ -59,17 +59,17 @@ export const AppComponent = {
 		    $document.scrollToElementAnimated($section, offset, dur, ease);
 		  }
 
-		  function slugifyNodes(nodes, toslug) {
-		    angular.forEach(nodes, function(v) {
-		      v.anchor = vm.navMenu.slugify(v[toslug]);
+		  function slugifyNodes(items, toslug) {
+		    angular.forEach(items, function(item) {
+		      item.anchor = vm.navMenu.slugify(item[toslug]);
 		      var toslug2 = toslug+'2';
-		      if (v[toslug2]) { v.anchor2 = vm.navMenu.slugify(v[toslug2]); }
-		      if (v.nodes) { slugifyNodes(v.nodes, toslug); }
+		      if (item[toslug2]) { item.anchor2 = vm.navMenu.slugify(item[toslug2]); }
+		      if (item.items) { slugifyNodes(item.items, toslug); }
 		    });
 		  }
 
 		  vm.navMenu = ConfigstoreService.get('navMenu');
-		  slugifyNodes(vm.navMenu.nodes, 'title');
+		  slugifyNodes(vm.navMenu.items, 'title');
 
 		  vm.setSequence = function(seq, step, val, i) {
 		    if (i) {

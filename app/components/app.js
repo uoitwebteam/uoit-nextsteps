@@ -11,6 +11,7 @@ import 'angular-responsive-images/src/angular-responsive-images';
 import 'angular-inview';
 
 import { PageSectionModule } from './page-section/page-section';
+import { PageNavModule } from './page-nav/page-nav';
 import { ChecklistModule } from './checklist/checklist';
 import { BgVideoModule } from './bg-video/bg-video';
 import { ParallaxModule } from './parallax/parallax';
@@ -28,6 +29,7 @@ const requires = [
 	'angular-inview',
   'bhResponsiveImages',
   PageSectionModule,
+  PageNavModule,
   ChecklistModule,
   BgVideoModule,
   ParallaxModule,
