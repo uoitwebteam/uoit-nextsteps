@@ -23,7 +23,7 @@ function buildScript(file) {
   const shouldCreateSourcemap = !global.isProd || config.browserify.prodSourcemap;
 
   let bundler = browserify({
-    entries: [config.sourceDir + 'js/' + file],
+    entries: [config.sourceDir + 'components/' + file],
     debug: shouldCreateSourcemap,
     cache: {},
     packageCache: {},
@@ -75,6 +75,6 @@ function buildScript(file) {
 
 gulp.task('browserify', function() {
 
-  return buildScript('main.js');
+  return buildScript('app.js');
 
 });
