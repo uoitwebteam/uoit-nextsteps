@@ -297,8 +297,6 @@ section {
 }
 
 .section-2 {
-	//background: $uoitlightblue;
-	//box-shadow: inset -600px 0 200px rgba(0,0,0,0.8);
 	height: auto;
 	position: relative;
 	background-image: url('../images/ub_bg.jpg');
@@ -312,18 +310,19 @@ section {
 		top: 0;
 		width: 100%;
 		height: 100%;
-		//@include gradientBg();
 		background-image: url('../images/fade-bg-left.png');
 		background-repeat: repeat-y;
-		background-size: 60%;
+		background-size: 70%;
 	}
 	.text-container {
-		//background: rgba(255,255,255, 0.8);
-    max-width: 50%;
+    max-width: 80%;
     padding: 15% 3rem;
+    &-content {
+    	max-width: 70%;
+    }
 	}
 	.list-container {
-		padding-right: 30%;
+		padding-right: 10%;
 	}
 }
 

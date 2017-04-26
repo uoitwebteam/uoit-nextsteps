@@ -67,6 +67,11 @@ body, html {
 			@include expand(60%);
 	    padding: 15% 2rem;
 		}
+		&-content {
+			@include breakpoint(medium down) {
+				@include expand(100%);
+			}
+		}
 	}
 	.list-container {
 		@include breakpoint(medium down) {
