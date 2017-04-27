@@ -22,17 +22,17 @@ export const AppComponent = {
 		    visible: false,
 		    sources: {
 		      p480: [{
-		      	src: 'images/NextSteps_480p.webm',
+		      	src: 'images/NextSteps_480p_VBR1_1200.webm',
 		      	type: 'video/webm'
 		      },{
-		      	src: 'images/NextSteps_480p.mp4',
+		      	src: 'images/NextSteps_480p_VBR1_1200.mp4',
 		      	type: 'video/mp4'
 		      }],
 		      p720: [{
-		      	src: 'images/NextSteps_720p.webm',
+		      	src: 'images/NextSteps_720p_VBR1_2000.webm',
 		      	type: 'video/webm'
 		      },{
-		      	src: 'images/NextSteps_720p.mp4',
+		      	src: 'images/NextSteps_720p_VBR1_2000.mp4',
 		      	type: 'video/mp4'
 		      }],
 		      fallback: 'images/UA_Link_low.gif' 
@@ -42,8 +42,8 @@ export const AppComponent = {
 		  $scope.$watch(() => {
 			  if ($window.matchMedia('(min-width: 1920px)').matches) {
 			    return 1920;
-			  } else if ($window.matchMedia('(min-width: 768px)').matches) {
-			    return 768;
+			  } else if ($window.matchMedia('(min-width: 1024px)').matches) {
+			    return 1024;
 			  } else {
 			    return 0;
 			  }
