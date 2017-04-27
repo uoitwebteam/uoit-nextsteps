@@ -1,7 +1,7 @@
 <div class="main-container">
 	<bg-video visible="($ctrl.sections[0] || $ctrl.sections[2] || $ctrl.sections[4] || $ctrl.sections[6] || $ctrl.sections[7])" mobile="mobile" sources="$ctrl.sources" fallback="{{ ::video.sources.fallback }}"></bg-video>
 
-	<page-nav active="$ctrl.navMenu.active" items="$ctrl.navMenu.items"></page-nav>
+	<page-nav active="!$ctrl.sections[0]"></page-nav>
 
 	<!-- <ng-include src="'partials/_section-1.html'"></ng-include> -->
 	<page-section template-url="partials/_section-1.html" in-view="$ctrl.sections[0] = $inview"></page-section>

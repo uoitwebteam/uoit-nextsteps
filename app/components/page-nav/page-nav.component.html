@@ -1,5 +1,4 @@
-<button class="nav-btn" ng-click="$ctrl.open = !$ctrl.open" ng-class="{'open': $ctrl.open}"><span class="icon icon_menu"></span> Menu</button>
-<nav class="section-nav" ng-class="{'open': $ctrl.open}">
+<nav class="page-nav" ng-class="{'open': $ctrl.open}">
 	<ul class="top-list" ng-class="{'active': $ctrl.active}">
 		<li ng-repeat="item in ::$ctrl.items" du-scrollspy="{{ ::item.anchor }}">
 			<a href="#{{ ::item.anchor }}" title="Jump to {{ ::item.title }} section"  du-smooth-scroll ng-click="$ctrl.open = false">
@@ -16,3 +15,4 @@
 		</li>
 	</ul>
 </nav>
+<button class="nav-btn" ng-click="$ctrl.open = !$ctrl.open" ng-class="{'open': $ctrl.open}"><span class="icon icon_menu"></span> Menu</button>

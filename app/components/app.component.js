@@ -2,7 +2,7 @@ export const AppComponent = {
   restrict: 'E',
   templateUrl: 'app.component.html',
   controller: class AppController {
-  	constructor($window, $scope, $stateParams, $timeout, $document, $http, DatastoreService, ConfigstoreService, store) {
+  	constructor($window, $scope, $timeout, $document, $http, $stateParams, DatastoreService, SlugifyService, store) {
 			'ngInject';
 		  // ViewModel
 		  const vm = this;
@@ -52,25 +52,6 @@ export const AppComponent = {
 		    vm.sources = (value === 1920) ? s.video.sources.p720 : s.video.sources.p480;
 		  });
 
-		  var easings = {
-		    easeOutCirc: function(t) { const t1 = t - 1; return Math.sqrt( 1 - t1 * t1 ); }
-		  }
-		  function scrollTo($section, offset, dur, ease) {
-		    $document.scrollToElementAnimated($section, offset, dur, ease);
-		  }
-
-		  function slugifyNodes(items, toslug) {
-		    angular.forEach(items, function(item) {
-		      item.anchor = vm.navMenu.slugify(item[toslug]);
-		      var toslug2 = toslug+'2';
-		      if (item[toslug2]) { item.anchor2 = vm.navMenu.slugify(item[toslug2]); }
-		      if (item.items) { slugifyNodes(item.items, toslug); }
-		    });
-		  }
-
-		  vm.navMenu = ConfigstoreService.get('navMenu');
-		  slugifyNodes(vm.navMenu.items, 'title');
-
 		  vm.setSequence = function(seq, step, val, i) {
 		    if (i) {
 		      vm.sequence[seq][step][i] = val;
@@ -113,44 +94,16 @@ export const AppComponent = {
 		  	}
 		  }
 
-		  vm.initSequence3 = function() {
-		    scrollTo(angular.element(document.getElementById('welcome')), 0, 2000, easings.easeOutCirc);
-		    return $timeout(() => {
-		      vm.sequence[1].init = true;
-			  }, 2000);
+		  var easings = {
+		    easeOutCirc: function(t) { const t1 = t - 1; return Math.sqrt( 1 - t1 * t1 ); }
+		  }
+		  function scrollTo($section, offset, dur, ease) {
+		    $document.scrollToElementAnimated($section, offset, dur, ease);
 		  }
 
-		  const storedChecklist2 = store.get(vm.checklistNames.section2);
-		  const storedChecklist3 = store.get(vm.checklistNames.section3);
-		  vm[vm.checklistNames.section2] = DatastoreService.get(vm.checklistNames.section2);
-		  vm[vm.checklistNames.section3] = DatastoreService.get(vm.checklistNames.section3);
-
-		  if (storedChecklist2) {
-		    angular.forEach(storedChecklist2, function(val, key){
-		      var month = key;
-		      angular.forEach(val.points, function(v, k){
-		        var point = k;
-		        if (v && v.hasOwnProperty('complete') && vm[vm.checklistNames.section2][month].points[point]) {
-		          vm[vm.checklistNames.section2][month].points[point].complete = v.complete;
-		        }
-		      });
-		    });
+		  vm.scrollTo = id => {
+		    return scrollTo(angular.element(document.getElementById(id)), 0, 2000, easings.easeOutCirc);
 		  }
-		  if (storedChecklist3) {
-		    angular.forEach(storedChecklist3, function(val, key){
-		      var month = key;
-		      angular.forEach(val.points, function(v, k){
-		        var point = k;
-		        if (v && v.hasOwnProperty('complete') && vm[vm.checklistNames.section3][month].points[point]) {
-		          vm[vm.checklistNames.section3][month].points[point].complete = v.complete;
-		        }
-		      });
-		    });
-		  }
-
-		  vm.facultyList = DatastoreService.get(vm.checklistNames.section4);
-		  slugifyNodes(vm.facultyList, 'name');
-		  vm.smartstartList = DatastoreService.get(vm.checklistNames.section5);
 
 		  vm.attachHeader = function($inview, $inviewInfo) {
 		    if ($inview === true) {
@@ -167,6 +120,36 @@ export const AppComponent = {
 		      vm.sequence[3].attach = false;
 		    }
 		  }
+
+		  function mergeChecklist(constant, stored) {
+		    angular.forEach(stored, function(val, key){
+		      var month = key;
+		      angular.forEach(val.points, function(v, k){
+		        var point = k;
+		        if (v && v.hasOwnProperty('complete') && constant[month].points[point]) {
+		          constant[month].points[point].complete = v.complete;
+		        }
+		      });
+		    });
+		  }
+
+		  const storedChecklist2 = store.get(vm.checklistNames.section2);
+		  const storedChecklist3 = store.get(vm.checklistNames.section3);
+		  vm[vm.checklistNames.section2] = DatastoreService.get(vm.checklistNames.section2);
+		  vm[vm.checklistNames.section3] = DatastoreService.get(vm.checklistNames.section3);
+
+		  if (storedChecklist2) {
+		    mergeChecklist(vm[vm.checklistNames.section2], storedChecklist2);
+		  }
+		  if (storedChecklist3) {
+		    mergeChecklist(vm[vm.checklistNames.section3], storedChecklist3);
+		  }
+
+		  vm.facultyList = DatastoreService.get(vm.checklistNames.section4);
+		  SlugifyService.process(vm.facultyList, 'name');
+		  vm.smartstartList = DatastoreService.get(vm.checklistNames.section5);
+
+		  vm.initSequence();
 		}
   }
 };

@@ -1,12 +1,12 @@
 import angular from 'angular';
 
 import { DatastoreService } from './datastore.service';
-import { ConfigstoreService } from './configstore.service';
+import { SlugifyService } from './slugify.service';
 
 import templatecacheRun from './templatecache.run';
 
 export const CommonModule = angular.module('app.common', [])
 	.service('DatastoreService', DatastoreService)
-	.service('ConfigstoreService', ConfigstoreService)
+	.service('SlugifyService', SlugifyService)
 	.run(templatecacheRun)
 	.name;

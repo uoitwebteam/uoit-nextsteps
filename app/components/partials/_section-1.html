@@ -1,4 +1,4 @@
-<section class="section-1" in-view="$ctrl.initSequence(); $ctrl.navMenu.active = !$inview;"
+<section class="section-1" in-view="$ctrl.navMenu.active = !$inview;"
 	in-view-options="{offsetBottom: -1}"
 	ng-class="{ 'darkened' : $ctrl.sequence[0].globe[1] }">
 	<div>
@@ -15,7 +15,7 @@
 
 		<button class="buttonWhite animated" 
 			ng-class="{'bounceInUp' : $ctrl.sequence[0].cta && !$ctrl.sequence[0].globe[0], 'hidden' : !$ctrl.sequence[0].cta, 'bounceOutDown' : $ctrl.sequence[0].globe[0]}"
-			ng-click="$ctrl.initSequence3()">
+			ng-click="$ctrl.scrollTo('welcome')">
 			Get ready for September
 		</button>
 	</div>
