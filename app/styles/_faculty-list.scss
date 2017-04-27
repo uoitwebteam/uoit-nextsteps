@@ -1,0 +1,54 @@
+.faculty-bg {
+	&-list {
+		margin: 0;
+		padding: 2rem 0;
+		width: 80%;
+		list-style: none;
+  	li {
+			overflow: hidden;
+  		margin: 0 0 0 2rem;
+	    background-color: #fff;
+  		// &.has-highlight.active {
+  		// 	padding: 2rem;
+  		// 	background: $uoitlightblue; 
+  		// 	border-left: 0;
+  		// 	label {
+  		// 		color: white;
+  		// 		//font-size: 1.6rem;
+  		// 		@include inputStyles(1.2rem, $uoitdarkblue, dark , 0);
+  		// 	}
+  		// 	a {
+  		// 		color: white;
+  		// 		border-bottom: dotted 1px white;
+  		// 		&:hover {
+  		// 			color: rgba(255,255,255, 0.6);
+  		// 			border-bottom: dotted 1px rgba(255,255,255, 0.6);
+  		// 		}
+  		// 	}
+  		// }
+  	}
+	}
+	&-container {
+		position:relative;
+	}
+	&-image {
+		@include cover();
+		z-index: -1;
+	}
+	&-content {
+		position:relative;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: 0.5rem 1rem;
+		background-color: $white-transparent;
+		h3 {
+			color: white;
+			font-size: 5rem;
+			small {
+  			color: $uoitdarkblue;
+  			font-size: 50%;
+  		}
+		}
+	}
+}

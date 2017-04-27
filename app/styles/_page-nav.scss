@@ -2,7 +2,7 @@
 	.nav-btn {
 		display: none;
 	}
-	.section-nav {
+	.page-nav {
 		position: fixed;
 		z-index: 10000000;
 		top: 0.5rem;
@@ -90,7 +90,7 @@
 		margin: 0;
 		padding: 0.25rem 1.5rem;
 	}
-	.section-nav {
+	.page-nav {
 		position: fixed;
 		z-index: -100000;
 		top: 0;

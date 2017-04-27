@@ -1,10 +1,11 @@
+@import 'variables';
 @import 'mixins';
 @import 'breakpoint';
-//@import 'animate';
 @import 'animations';
 
-@import 'nav';
-@import 'map';
+// components
+@import 'page-nav';
+@import 'faculty-list';
 
 .svg-text-alternative {
 	display: none;
@@ -363,7 +364,7 @@ section {
 		display: inline-block;
 		float: right;
 		z-index: 100000;
-		background: rgba(255,255,255, 0.85);
+		background: $white-transparent;
 		padding: 5rem;
 		p {
 			font-size: 1.5rem;
@@ -375,12 +376,11 @@ section {
 	position:relative;
 	z-index: 100;
 	height: auto;
-	background: $uoitlightblue;
+		background: $white-transparent;
 	.bg-element {
 		z-index: -1;
 	}
 	article {
-		background: rgba(255,255,255, 0.85);
 		padding: 5rem;
 		h2 {
 			font-size: 3rem;
@@ -390,57 +390,57 @@ section {
 			}
 		}
 	}
-	.faculty-list {
-		position:relative;
-		padding: 2rem 0;
-		//-webkit-box-shadow: inset 50vw 0 30vw rgba(white, 0.8);
-		background-image: url('../images/fade-bg-left.png');
-		background-repeat: repeat-y;
-		background-size: 60%;
-		//@include gradientBg();
-		.buttonWhite {
-			display: block;
-			width: 30%;
-			margin: 0 auto 3rem auto;
-			background: rgba($uoitdarkblue, 0.9);	
-		}
-		ul {
-			@include viewport-unit(max-width, 50vw);
-			margin-left: 0;
-			list-style: none;
-	  	li {
-	  		padding: 0.5rem 1rem;
-	  		margin: 0 0 20rem 2rem;
-	  		transition: 0.6s ease;
-	  		h3 {
-	  			color: white;
-	  			font-size: 5rem;
-	  			small {
-		  			color: $uoitdarkblue;
-		  			font-size: 50%;
-		  		}
-	  		}
-	  		&.has-highlight.active {
-	  			padding: 2rem;
-	  			background: $uoitlightblue; 
-	  			border-left: 0;
-	  			label {
-	  				color: white;
-	  				//font-size: 1.6rem;
-	  				@include inputStyles(1.2rem, $uoitdarkblue, dark , 0);
-	  			}
-	  			a {
-	  				color: white;
-	  				border-bottom: dotted 1px white;
-	  				&:hover {
-	  					color: rgba(255,255,255, 0.6);
-	  					border-bottom: dotted 1px rgba(255,255,255, 0.6);
-	  				}
-	  			}
-	  		}
-	  	}
-		}
-	}
+	// .faculty-list {
+	// 	position:relative;
+	// 	padding: 2rem 0;
+	// 	//-webkit-box-shadow: inset 50vw 0 30vw rgba(white, 0.8);
+	// 	background-image: url('../images/fade-bg-left.png');
+	// 	background-repeat: repeat-y;
+	// 	background-size: 60%;
+	// 	//@include gradientBg();
+	// 	.buttonWhite {
+	// 		display: block;
+	// 		width: 30%;
+	// 		margin: 0 auto 3rem auto;
+	// 		background: rgba($uoitdarkblue, 0.9);	
+	// 	}
+	// 	ul {
+	// 		@include viewport-unit(max-width, 50vw);
+	// 		margin-left: 0;
+	// 		list-style: none;
+	//   	li {
+	//   		padding: 0.5rem 1rem;
+	//   		margin: 0 0 20rem 2rem;
+	//   		transition: 0.6s ease;
+	//   		h3 {
+	//   			color: white;
+	//   			font-size: 5rem;
+	//   			small {
+	// 	  			color: $uoitdarkblue;
+	// 	  			font-size: 50%;
+	// 	  		}
+	//   		}
+	//   		&.has-highlight.active {
+	//   			padding: 2rem;
+	//   			background: $uoitlightblue; 
+	//   			border-left: 0;
+	//   			label {
+	//   				color: white;
+	//   				//font-size: 1.6rem;
+	//   				@include inputStyles(1.2rem, $uoitdarkblue, dark , 0);
+	//   			}
+	//   			a {
+	//   				color: white;
+	//   				border-bottom: dotted 1px white;
+	//   				&:hover {
+	//   					color: rgba(255,255,255, 0.6);
+	//   					border-bottom: dotted 1px rgba(255,255,255, 0.6);
+	//   				}
+	//   			}
+	//   		}
+	//   	}
+	// 	}
+	// }
 }
 
 .section-5 {
@@ -613,7 +613,7 @@ section {
 				font-style: normal;
 				transition: background 300ms;
 				&:hover {
-					background: rgba(white, 0.9);
+					background: $white-transparent;
 				}
 				strong {
 					font-family: franklin_gothic_fsdemi;
