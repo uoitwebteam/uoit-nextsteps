@@ -24,7 +24,8 @@ bower_components
 
 # Build files
 build
-templates.js
+*.mp4
+*.webm
 
 #webstorm
 .idea
