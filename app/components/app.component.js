@@ -19,7 +19,7 @@ export const AppComponent = {
 		  };
 
 		  s.video = {
-		    visible: false,
+		    visible: true,
 		    sources: {
 		      p480: [{
 		      	src: 'images/NextSteps_480p_VBR1_1200.webm',
@@ -150,12 +150,12 @@ export const AppComponent = {
 		  slugifyNodes(vm.facultyList, 'name');
 		  vm.smartstartList = DatastoreService.get(vm.checklistNames.section5);
 
-		  vm.attachHeader = function($inview, $inviewpart) {
+		  vm.attachHeader = function($inview, $inviewInfo) {
 		    if ($inview === true) {
-		      if ($inviewpart == 'neither' && $inviewpart != 'bottom') {
+		      if (!$inviewInfo.parts.top && !$inviewInfo.parts.bottom) {
 		        vm.sequence[3].attach = true;
-		      } else if ($inviewpart == 'bottom') {
-		        vm.sequence[3].unattach = !$inview;
+		      } else if ($inviewInfo.parts.bottom) {
+		        vm.sequence[3].unattach = true;
 		      } else {
 		        vm.activeBg = -1;
 		        vm.sequence[3].attach = false;
@@ -163,12 +163,6 @@ export const AppComponent = {
 		    } else {
 		      vm.sequence[3].unattach = false;
 		      vm.sequence[3].attach = false;
-		    }
-		  }
-
-		  s.updateBg = function($inview, $inviewpart, $index) {
-		    if ($inview && $inviewpart == 'both') {
-		      vm.activeBg = $index;
 		    }
 		  }
 		}

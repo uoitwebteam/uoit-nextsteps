@@ -35,7 +35,7 @@
     "angular": "1.5.9",
     "angular-cookies": "1.5.9",
     "angular-google-maps": "^2.3.2",
-    "angular-inview": "^1.5.7",
+    "angular-inview": "beta",
     "angular-responsive-images": "git+https://github.com/c0bra/angular-responsive-images.git",
     "angular-sanitize": "1.5.9",
     "angular-scroll": "^1.0.0",

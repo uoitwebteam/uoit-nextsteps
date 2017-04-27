@@ -7,8 +7,8 @@ import ngCookies from 'angular-cookies';
 import ngStorage from 'angular-storage';
 import duScroll from 'angular-scroll';
 import uiRouter from 'angular-ui-router';
+import inView from 'angular-inview';
 import 'angular-responsive-images/src/angular-responsive-images';
-import 'angular-inview';
 
 import { PageSectionModule } from './page-section/page-section';
 import { PageNavModule } from './page-nav/page-nav';
@@ -26,6 +26,7 @@ const requires = [
   ngStorage,
   duScroll,
   uiRouter,
+  inView.name,
 	'angular-inview',
   'bhResponsiveImages',
   PageSectionModule,
