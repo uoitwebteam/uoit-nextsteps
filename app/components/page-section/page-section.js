@@ -1,7 +1,7 @@
 import angular from 'angular';
 
-import { PageSectionComponent } from './page-section.component';
+import { PageSectionDirective } from './page-section.directive';
 
 export const PageSectionModule = angular.module('pageSection', [])
-	.component('pageSection', PageSectionComponent)
+	.directive('pageSection', PageSectionDirective)
 	.name;
