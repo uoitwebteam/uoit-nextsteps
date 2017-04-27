@@ -1,17 +1,17 @@
 <div class="main-container">
-	<bg-video visible="video.visible" mobile="mobile" sources="$ctrl.sources" fallback="{{ ::video.sources.fallback }}"></bg-video>
+	<bg-video visible="($ctrl.sections[0] || $ctrl.sections[2] || $ctrl.sections[4] || $ctrl.sections[6] || $ctrl.sections[7])" mobile="mobile" sources="$ctrl.sources" fallback="{{ ::video.sources.fallback }}"></bg-video>
 
 	<page-nav active="$ctrl.navMenu.active" items="$ctrl.navMenu.items"></page-nav>
 
 	<!-- <ng-include src="'partials/_section-1.html'"></ng-include> -->
-	<page-section template-url="partials/_section-1.html"></page-section>
-	<page-section template-url="partials/_section-2.html"></page-section>
-	<page-section template-url="partials/_section-3.html"></page-section>
-	<page-section template-url="partials/_section-4.html"></page-section>
-	<page-section template-url="partials/_section-5.html"></page-section>
-	<page-section template-url="partials/_section-6.html"></page-section>
-	<page-section template-url="partials/_section-7.html"></page-section>
-	<page-section template-url="partials/_section-8.html"></page-section>
+	<page-section template-url="partials/_section-1.html" in-view="$ctrl.sections[0] = $inview"></page-section>
+	<page-section template-url="partials/_section-2.html" in-view="$ctrl.sections[1] = $inview"></page-section>
+	<page-section template-url="partials/_section-3.html" in-view="$ctrl.sections[2] = $inview"></page-section>
+	<page-section template-url="partials/_section-4.html" in-view="$ctrl.sections[3] = $inview"></page-section>
+	<page-section template-url="partials/_section-5.html" in-view="$ctrl.sections[4] = $inview"></page-section>
+	<page-section template-url="partials/_section-6.html" in-view="$ctrl.sections[5] = $inview"></page-section>
+	<page-section template-url="partials/_section-7.html" in-view="$ctrl.sections[6] = $inview"></page-section>
+	<page-section template-url="partials/_section-8.html" in-view="$ctrl.sections[7] = $inview"></page-section>
 	
 	<notification></notification>
 </div>

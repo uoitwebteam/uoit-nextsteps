@@ -98,6 +98,8 @@ export const AppComponent = {
 		    sas: []
 		  }];
 
+		  vm.sections = [false, false, false, false, false, false, false, false];
+
 		  vm.initSequence = function() {
 		  	if (vm.sequence[0].init === false) {
 					vm.sequence[0].init = true;
