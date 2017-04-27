@@ -16,6 +16,10 @@ export default {
 
   scripts: {
     src: 'app/js/**/*.js',
+    entry: 'app/components/app.js',
+    include: [
+    	'app/modernizr.js'
+    ],
     dest: 'build/js',
     test: 'test/**/*.js',
     gulp: 'gulp/**/*.js'
