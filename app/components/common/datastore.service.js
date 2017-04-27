@@ -41,7 +41,7 @@ export class DatastoreService {
 	          complete: false,
 	          show: false
 	        },{ 
-	          text: 'Submit your final post-secondary transcripts and course syllabi by Thursday, June 1 to ensure your transfer credit evaluation is complete before the beginning of the Fall semester. For details on what is required, visit your <a target="_blank" href="https://uoit.ca/mycampus/">applicant portal</a>.',
+	          text: 'Submit your final post-secondary transcripts and course syllabi by Thursday, June 1 to ensure your transfer credit evaluation is complete before the beginning of the fall semester. For details on what is required, visit your <a target="_blank" href="https://uoit.ca/mycampus/">applicant portal</a>.',
 	          complete: false,
 	          show: false,
 	          level: 105
@@ -166,36 +166,36 @@ export class DatastoreService {
 	    // 
 	    // 
 	    facultyList : [{ 
-	      date: 'Monday, August 15',
+	      date: 'WEDNESDAY, JULY 26 to THURSDAY, AUGUST 3',
 	      name: f.sci,
 	      image: 'ibegin_fsci.jpg',
 	      color: '#007749',
 	      show: false
-	    },{
-	      date: 'Tuesday, August 16',
-	      name: f.esns,
-	      name2: f.eas,
-	      image: 'ibegin_feas.jpg',
-	      color: '#6F263D',
-	      color2: '#5F259F',
-	      show: false
 	    },{ 
-	      date: 'Wednesday, August 17',
+	      date: 'THURSDAY, JULY 27 to FRIDAY, AUGUST 4',
 	      name: f.bit,
 	      image: 'ibegin_fbit.jpg',
 	      color: '#00558C',
 	      show: false
 	    },{ 
-	      date: 'Thursday, August 18',
+	      date: 'FRIDAY, JULY 28',
 	      name: f.hs,
 	      image: 'ibegin_fhs.jpg',
 	      color: '#AF272F',
 	      show: false
 	    },{ 
-	      date: 'Friday, August 19',
+	      date: 'MONDAY, JULY 31 to TUESDAY, AUGUST 1',
 	      name: f.ssh,
 	      image: 'ibegin_fssh.jpg',
 	      color: '#BE4D00',
+	      show: false
+	    },{
+	      date: 'WEDNESDAY, AUGUST 2',
+	      name: f.esns,
+	      name2: f.eas,
+	      image: 'ibegin_feas.jpg',
+	      color: '#6F263D',
+	      color2: '#5F259F',
 	      show: false
 	    }
 	    // ,{ 
