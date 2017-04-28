@@ -63,7 +63,7 @@ export class DatastoreService {
 	      	text: 'Submit final marks for upgrading courses by Friday, August 11.',
 	      	level: 101
 	      },{ 
-	        text: '<a target="_blank" href="https://uoit.ca/current-students/academics/finances/tuition-and-fees/payment-options/index.php?utm_source=nextsteps&utm_medium=web&utm_campaign=fees">Pay your first instalment of fees</a> by Friday, August 11. You’ll find a complete breakdown of your fees in your <a target="_blank" href="http://uoit.ca/mycampus/">MyCampus account</a>.'
+	        text: '<a target="_blank" href="https://uoit.ca/current-students/academics/finances/tuition-and-fees/payment-options/index.php?utm_source=nextsteps&utm_medium=web&utm_campaign=fees">Pay your first instalment of fees</a> by Friday, August 18. You’ll find a complete breakdown of your fees in your <a target="_blank" href="http://uoit.ca/mycampus/">MyCampus account</a>.'
 	      },{ 
 	        text: '<a target="_blank" href="http://studentlife.uoit.ca/student-learning/smart-start.php?utm_source=nextsteps&utm_medium=web&utm_campaign=smartstart">Attend Smart Start</a> to build a strong academic foundation for university.'
 	      }]
@@ -93,13 +93,11 @@ export class DatastoreService {
 	      points: [{ 
           text: 'Attend your faculty-specific Smart Start program (August 21 to September 1).'
         },{ 
-          text: 'Student Accessibility Services hosts transition evening for parents (August 21) and Summer Transition Program (August 28 to September 1).'
+          text: 'Student Accessibility Services hosts transition evening for parents (August 21) and Summer Transition Program (August 22 to 24).'
 	      }]
 	    }, {
 	      month: 'September',
 	      points: [{ 
-          text: 'Faculty-specific Smart Start programs continue (August 31 to September 1).'
-        },{ 
           text: 'Attend September Orientation and meet new friends on Tuesday, September 5 and Wednesday, September 6.'
 	      }]
 	    }],
