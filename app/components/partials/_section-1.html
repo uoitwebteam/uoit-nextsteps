@@ -1,18 +1,18 @@
 <section class="section-1">
 	<div>
-		<img src="https://shared.uoit.ca/global/files/img/logos/UOIT_white.png"
+		<img src="images/uoit-logo.svg"
 			alt="University of Ontario Institute of Technology"
 			class="logo animated fadeIn"
-			ng-class="{ 'fadeOut' : !$ctrl.sequence[0].logo && !$ctrl.sequence[0].location }" />
+			ng-class="{ 'fadeOut' : !$ctrl.sequence.logo && !$ctrl.sequence.location }" />
 
 		<h1 class="animated"
-			ng-class="{'flipInX' : $ctrl.sequence[0].heading, 'hidden' : !$ctrl.sequence[0].heading, 'bounceOutUp' : $ctrl.sequence[0].location }">
+			ng-class="{'flipInX' : $ctrl.sequence.heading, 'hidden' : !$ctrl.sequence.heading, 'bounceOutUp' : $ctrl.sequence.location }">
 			Are you ready for UOIT?<br/>
 			<small>We are ready for you!</small>
 		</h1>
 
 		<button class="buttonWhite buttonWhiter animated" 
-			ng-class="{'bounceInUp' : $ctrl.sequence[0].cta, 'hidden' : !$ctrl.sequence[0].cta, 'bounceOutDown' : $ctrl.sequence[0].location }"
+			ng-class="{'bounceInUp' : $ctrl.sequence.cta, 'hidden' : !$ctrl.sequence.cta, 'bounceOutDown' : $ctrl.sequence.location }"
 			ng-click="$ctrl.scrollTo('welcome')">
 			Get ready for September
 		</button>

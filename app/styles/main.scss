@@ -262,6 +262,9 @@ section {
 	transition: 0.5s;
 	z-index: 100;
 	.logo {
+		padding: 0 1rem;
+		width: calc(300px + 2rem);
+		height: 111px;
 		@include center(both);
 	}
 	div {
