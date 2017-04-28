@@ -376,12 +376,22 @@ section {
 	position:relative;
 	z-index: 100;
 	height: auto;
-		background: $white-transparent;
+	background-image: url('../images/ub_bg.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
 	.bg-element {
 		z-index: -1;
 	}
 	article {
-		padding: 5rem;
+		background: $white-transparent;
+		padding: 5rem 20% 2.5rem 5rem;
+		@include breakpoint(small up) {
+			padding: 5rem 20% 2.5rem 5rem;
+		}
+		@include breakpoint(medium up) {
+			padding: 5rem 30% 2.5rem 5rem;
+		}
 		h2 {
 			font-size: 3rem;
 			.ibegin {
@@ -536,6 +546,7 @@ section {
 		}
 	}
 	aside.cta {
+		text-align: center;
 		background: rgba(white,0.6);
 	}
 }
