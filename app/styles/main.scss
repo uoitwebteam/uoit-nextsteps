@@ -39,25 +39,12 @@
 	display: none;
 }
 
-
 .ibegin {
 	text-transform: none;
 }
 
 .hidden {
 	opacity: 0;
-	&.google-map,
-	&.location-msg {
-		z-index: -1;
-	}
-}
-
-.blurred {
-	filter:blur(10px);
-}
-
-.darkened {
-  @include radialGrad(rgba(0,0,0,0.6), rgba(0,0,0,1));
 }
 
 h1,h2,h3,h4 {
@@ -104,9 +91,6 @@ label small {
 }
 
 .list-container {
-	// max-height: 300px;
-	// overflow-y: scroll;
-	//background: rgba(255,255,255,0.7);
 	padding: 2rem 0;
 	ul {
 		margin-left: 0;

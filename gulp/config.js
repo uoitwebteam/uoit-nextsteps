@@ -41,6 +41,7 @@ export default {
     'png',
     'jpe?g',
     'gif',
+    'ico',
     'svg',
     'eot',
     'mp4',
