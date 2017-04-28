@@ -91,7 +91,7 @@ export class DatastoreService {
 	    }, {
 	      month: 'August',
 	      points: [{ 
-          text: 'Attend your faculty-specific Smart Start program (August 21 to 31).'
+          text: 'Attend your faculty-specific Smart Start program (August 21 to September 1).'
         },{ 
           text: 'Student Accessibility Services hosts transition evening for parents (August 21) and Summer Transition Program (August 28 to September 1).'
 	      }]
@@ -100,7 +100,7 @@ export class DatastoreService {
 	      points: [{ 
           text: 'Faculty-specific Smart Start programs continue (August 31 to September 1).'
         },{ 
-          text: 'Attend September orientation and meet new friends on Tuesday, September 5 and Wednesday, September 6.'
+          text: 'Attend September Orientation and meet new friends on Tuesday, September 5 and Wednesday, September 6.'
 	      }]
 	    }],
 	    // iBEGIN FACULTY LIST
@@ -149,7 +149,8 @@ export class DatastoreService {
 	    smartstartList: [{
 	      fac: [f.bit, '#00558C'],
 	      dates: [
-	        'Monday, August 21 and Monday, August 29'
+	        'Monday, August 21', 
+	        'Monday, August 29'
 	      ]
 	    },{
 	      fac: [f.esns, '#6F263D'],
@@ -167,13 +168,14 @@ export class DatastoreService {
 	    },{
 	      fac: [f.hs, '#AF272F'],
 	      dates: [
-	        'Tuesday, August 22 (bridging students)',
-	        'Monday, August 28 (first-year students)'
+	        'Tuesday, August 22',
+	        'Monday, August 28'
 	      ]
 	    },{
 	      fac: [f.ssh, '#BE4D00'],
 	      dates: [
-	        'Wednesday, August 23 and Wednesday, August 30'
+	        'Wednesday, August 23',
+	        'Wednesday, August 30'
 	      ]
 	    }]
 	  }

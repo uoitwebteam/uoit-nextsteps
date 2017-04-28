@@ -248,22 +248,23 @@ ul.block-list {
 	padding: 1rem 2rem;
 	margin: 1rem 0;
 	font-size: 1.25rem;
-	&White {
+}
+
+.buttonWhiter {
+	border: solid 1px white;
+	color:  white;
+	&:hover, &:focus {
+		background: rgba(255,255,255,0.1);
 		border: solid 1px white;
 		color:  white;
-		&:hover, &:focus {
-			background: rgba(255,255,255,0.1);
-			border: solid 1px white;
-			color:  white;
-		}
-		&:active {
-			transition: 0.15s;
-			background: rgba(255,255,255,0.4);
-			color:  white;
-		}
-		&.greener {
-			background: rgba($uoitlightblue, 0.3);
-		}
+	}
+	&:active {
+		transition: 0.15s;
+		background: rgba(255,255,255,0.4);
+		color:  white;
+	}
+	&.greener {
+		background: rgba($uoitlightblue, 0.3);
 	}
 }
 
@@ -547,7 +548,7 @@ section {
 	}
 	aside.cta {
 		text-align: center;
-		background: rgba(white,0.6);
+		background: rgba(white,0.8);
 	}
 }
 
