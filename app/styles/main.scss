@@ -213,7 +213,7 @@ ul.block-list {
 	opacity: 0;
   font-family: franklin_gothic_fsdemi;
 	text-transform: uppercase;
-	background: rgba(199,21,102,0.9);
+	background: rgba($uoitpink, 0.9);
 	color: white;
 	padding: 0.5rem 1.5rem 0.5rem 4.5rem;
 	box-shadow: 0 0 15px rgba(0,0,0,0.15);
@@ -395,10 +395,14 @@ section {
 		}
 		h2 {
 			font-size: 3rem;
-			.ibegin {
-				font-size: 5rem;
-				color: #0077CA;
-			}
+		}
+		h2 .ibegin {
+			color: $uoitlightblue;
+			font-size: 5rem;
+		}
+		.asterisk {
+			font-size: 130%;
+			color: $uoitpink;
 		}
 	}
 	// .faculty-list {
