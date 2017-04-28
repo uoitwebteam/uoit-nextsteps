@@ -46,6 +46,11 @@ export const AppComponent = {
 		  	this.checkAndSetMobile.bind(this)
 		  );
 
+		  this.stickyHeader = {
+		    attach: false,
+		    unattach: false
+		  };
+
 		  this.sequence = [{
 		  	init: false, // permanent switch
 		  	logo: false, // uoit logo slide down
@@ -58,11 +63,6 @@ export const AppComponent = {
 		  	parallax: 0
 		  },{
 		    titles: []
-		  },{
-		    attach: false,
-		    unattach: false
-		  },{
-		    sas: []
 		  }];
 
 		  this.sections = [false, false, false, false, false, false, false, false];
@@ -104,19 +104,18 @@ export const AppComponent = {
 	    });
 	  }
 
-	  attachHeader($inview, $inviewInfo) {
-	    if ($inview === true) {
-	      if (!$inviewInfo.parts.top && !$inviewInfo.parts.bottom) {
-	        this.sequence[3].attach = true;
-	      } else if ($inviewInfo.parts.bottom) {
-	        this.sequence[3].unattach = true;
+	  attachHeader($inview, { parts }) {
+	    if ($inview) {
+	      if (!parts.top && !parts.bottom) {
+	        this.stickyHeader.attach = true;
+	      } else if (parts.bottom) {
+	        this.stickyHeader.unattach = true;
 	      } else {
-	        this.activeBg = -1;
-	        this.sequence[3].attach = false;
+	        this.stickyHeader.attach = false;
 	      }
 	    } else {
-	      this.sequence[3].unattach = false;
-	      this.sequence[3].attach = false;
+	      this.stickyHeader.unattach = false;
+	      this.stickyHeader.attach = false;
 	    }
 	  }
 

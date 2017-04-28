@@ -1,17 +1,17 @@
 <section class="section-6" id="accessibility" parallax-background parallax-ratio="0.2" parallax-vertical-offset="{{ mobile ? 0 : 100 }}">
 	<h2><span class="ion-ios-body"></span><br/>Student Accessibility Services (SAS)</h2>
 	<article class="animated" 
-		in-view="$ctrl.sequence[4].sas[0] = $inview;"
+		in-view="sasHeader = $inview;"
 		in-view-options="{ offset: [50, 0, -50, 0], throttle: 200 }"
-		ng-class="{'fadeOutLeft' : !$ctrl.sequence[4].sas[0], 'fadeInLeft' : $ctrl.sequence[4].sas[0]}">
+		ng-class="{'fadeOutLeft' : !sasHeader, 'fadeInLeft' : sasHeader}">
 		<h3>Transition evening for parents of students with disabilities</h3>
 		<p>This is an opportunity to meet fellow parents of university students with disabilities. Learn about the services offered through the SAS office, how we will support your student and hear some success stories.</p>
 		<p><span class="icon icon_calendar inline-icon"></span>Monday, August 21 from 6 to 8 p.m.</p>
 	</article>
 	<article class="animated" 
-		in-view="$ctrl.sequence[4].sas[1] = $inview;"
+		in-view="stpHeader = $inview;"
 		in-view-options="{ offset: [50, 0, -50, 0], throttle: 200 }"
-		ng-class="{'fadeOutRight' : !$ctrl.sequence[4].sas[1], 'fadeInRight' : $ctrl.sequence[4].sas[1]}">
+		ng-class="{'fadeOutRight' : !stpHeader, 'fadeInRight' : stpHeader}">
 		<h3>Summer Transition Program</h3>
 		<p>The STP is for new students at the university who identify as a person with a disability.</p>
 		<p>This program will help you to:</p>
