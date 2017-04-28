@@ -27,6 +27,7 @@
 
 			<li class="animated" ng-repeat="fac in ::$ctrl.facultyList"
 				in-view="fac.show = $inview;"
+				in-view-options="{ throttle: 200 }"
 				ng-class="{'fadeOutLeft' : !fac.show, 'fadeInLeft' : fac.show }">
 				<div class="faculty-bg-container">
 					<img bh-src-responsive="[ [ 'default', 'images/768/'+fac.image ], [ 'small', 'images/1280/'+fac.image ], [ 'medium', 'images/1920/'+fac.image ] ]"
