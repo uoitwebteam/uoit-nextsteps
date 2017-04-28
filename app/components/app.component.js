@@ -4,67 +4,53 @@ export const AppComponent = {
   controller: class AppController {
   	constructor($window, $scope, $timeout, $document, $http, $stateParams, DatastoreService, SlugifyService, store) {
 			'ngInject';
-		  // ViewModel
-		  const vm = this;
-		  const s = $scope;
-		  const polonsky = [43.945127,-78.89683];
-		  const date = new Date();
-		  vm.level = $stateParams.l == 105 ? 105 : 101;
+		  this.$window = $window;
+		  this.$scope = $scope;
+		  this.$timeout = $timeout;
+		  this.$document = $document;
+		  this.$http = $http;
+		  this.$stateParams = $stateParams;
+		  this.DatastoreService = DatastoreService;
+		  this.SlugifyService = SlugifyService;
+		  this.store = store;
 
-		  vm.checklistNames = {
+		  this.level = $stateParams.l == 105 ? 105 : 101;
+
+		  this.checklistNames = {
 		  	section2: 'section2months',
 		  	section3: 'section3months',
 		  	section4: 'facultyList',
 		  	section5: 'smartstartList'
 		  };
 
-		  s.video = {
-		    visible: true,
-		    sources: {
-		      p480: [{
-		      	src: 'images/NextSteps_480p_VBR1_1200.webm',
-		      	type: 'video/webm'
-		      },{
-		      	src: 'images/NextSteps_480p_VBR1_1200.mp4',
-		      	type: 'video/mp4'
-		      }],
-		      p720: [{
-		      	src: 'images/NextSteps_720p_VBR1_2000.webm',
-		      	type: 'video/webm'
-		      },{
-		      	src: 'images/NextSteps_720p_VBR1_2000.mp4',
-		      	type: 'video/mp4'
-		      }],
-		      fallback: 'images/UA_Link_low.gif' 
-		    }
+		  this.videoSources = {
+	      p480: [{
+	      	src: 'images/NextSteps_480p_VBR1_1200.webm',
+	      	type: 'video/webm'
+	      },{
+	      	src: 'images/NextSteps_480p_VBR1_1200.mp4',
+	      	type: 'video/mp4'
+	      }],
+	      p720: [{
+	      	src: 'images/NextSteps_720p_VBR1_2000.webm',
+	      	type: 'video/webm'
+	      },{
+	      	src: 'images/NextSteps_720p_VBR1_2000.mp4',
+	      	type: 'video/mp4'
+	      }],
+	      fallback: 'images/UA_Link_low.gif'
 		  }
 
-		  $scope.$watch(() => {
-			  if ($window.matchMedia('(min-width: 1920px)').matches) {
-			    return 1920;
-			  } else if ($window.matchMedia('(min-width: 1024px)').matches) {
-			    return 1024;
-			  } else {
-			    return 0;
-			  }
-		  }, value => {
-		    s.mobile = (value === 0);
-		    vm.sources = (value === 1920) ? s.video.sources.p720 : s.video.sources.p480;
-		  });
+		  $scope.$watch(
+		  	this.getViewportWidth.bind(this),
+		  	this.checkAndSetMobile.bind(this)
+		  );
 
-		  vm.setSequence = function(seq, step, val, i) {
-		    if (i) {
-		      vm.sequence[seq][step][i] = val;
-		    } else {
-		      vm.sequence[seq][step] = val;
-		    }
-		  }
-		  vm.sequence = [{
+		  this.sequence = [{
 		  	init: false, // permanent switch
 		  	logo: false, // uoit logo slide down
 		  	heading: false, // cta text flip in
 		  	cta: false, // cta button slide up
-		  	globe: [false, false, false], // gmap fade on, location msg
 		  	location: false // location resolved
 		  },{
 		    init: false,
@@ -79,77 +65,95 @@ export const AppComponent = {
 		    sas: []
 		  }];
 
-		  vm.sections = [false, false, false, false, false, false, false, false];
+		  this.sections = [false, false, false, false, false, false, false, false];
 
-		  vm.initSequence = function() {
-		  	if (vm.sequence[0].init === false) {
-					vm.sequence[0].init = true;
-					vm.sequence[0].logo = true;
-					return $timeout(() => {
-						vm.sequence[0].logo = false;
-						vm.sequence[0].heading = true;
-					}, 2000).then(() => $timeout(() => {
-			  		vm.sequence[0].cta = true;
-			  	}, 1000));
-		  	}
-		  }
+		  this.initChecklist(this.checklistNames.section2);
+		  this.initChecklist(this.checklistNames.section3);
+		  this.initChecklist(this.checklistNames.section4, 'name');
+		  this.initChecklist(this.checklistNames.section5);
 
-		  var easings = {
-		    easeOutCirc: function(t) { const t1 = t - 1; return Math.sqrt( 1 - t1 * t1 ); }
-		  }
-		  function scrollTo($section, offset, dur, ease) {
-		    $document.scrollToElementAnimated($section, offset, dur, ease);
-		  }
-
-		  vm.scrollTo = id => {
-		    return scrollTo(angular.element(document.getElementById(id)), 0, 2000, easings.easeOutCirc);
-		  }
-
-		  vm.attachHeader = function($inview, $inviewInfo) {
-		    if ($inview === true) {
-		      if (!$inviewInfo.parts.top && !$inviewInfo.parts.bottom) {
-		        vm.sequence[3].attach = true;
-		      } else if ($inviewInfo.parts.bottom) {
-		        vm.sequence[3].unattach = true;
-		      } else {
-		        vm.activeBg = -1;
-		        vm.sequence[3].attach = false;
-		      }
-		    } else {
-		      vm.sequence[3].unattach = false;
-		      vm.sequence[3].attach = false;
-		    }
-		  }
-
-		  function mergeChecklist(constant, stored) {
-		    angular.forEach(stored, function(val, key){
-		      var month = key;
-		      angular.forEach(val.points, function(v, k){
-		        var point = k;
-		        if (v && v.hasOwnProperty('complete') && constant[month].points[point]) {
-		          constant[month].points[point].complete = v.complete;
-		        }
-		      });
-		    });
-		  }
-
-		  const storedChecklist2 = store.get(vm.checklistNames.section2);
-		  const storedChecklist3 = store.get(vm.checklistNames.section3);
-		  vm[vm.checklistNames.section2] = DatastoreService.get(vm.checklistNames.section2);
-		  vm[vm.checklistNames.section3] = DatastoreService.get(vm.checklistNames.section3);
-
-		  if (storedChecklist2) {
-		    mergeChecklist(vm[vm.checklistNames.section2], storedChecklist2);
-		  }
-		  if (storedChecklist3) {
-		    mergeChecklist(vm[vm.checklistNames.section3], storedChecklist3);
-		  }
-
-		  vm.facultyList = DatastoreService.get(vm.checklistNames.section4);
-		  SlugifyService.process(vm.facultyList, 'name');
-		  vm.smartstartList = DatastoreService.get(vm.checklistNames.section5);
-
-		  vm.initSequence();
+		  this.initSequence();
 		}
+
+	  initSequence() {
+	  	if (this.sequence[0].init === false) {
+				this.sequence[0].init = true;
+				this.sequence[0].logo = true;
+				return this.$timeout(() => {
+					this.sequence[0].logo = false;
+					this.sequence[0].heading = true;
+				}, 2000).then(() => this.$timeout(() => {
+		  		this.sequence[0].cta = true;
+		  	}, 1000));
+	  	}
+	  }
+
+		setSequence(seq, step, val, i) {
+	    if (i) {
+	      this.sequence[seq][step][i] = val;
+	    } else {
+	      this.sequence[seq][step] = val;
+	    }
+	  }
+
+	  scrollTo(id) {
+	  	const el = angular.element(document.getElementById(id));
+	    this.$document.scrollToElementAnimated(el, 0, 2000, t => {
+	    	const t1 = t - 1;
+	    	return Math.sqrt( 1 - t1 * t1 );
+	    });
+	  }
+
+	  attachHeader($inview, $inviewInfo) {
+	    if ($inview === true) {
+	      if (!$inviewInfo.parts.top && !$inviewInfo.parts.bottom) {
+	        this.sequence[3].attach = true;
+	      } else if ($inviewInfo.parts.bottom) {
+	        this.sequence[3].unattach = true;
+	      } else {
+	        this.activeBg = -1;
+	        this.sequence[3].attach = false;
+	      }
+	    } else {
+	      this.sequence[3].unattach = false;
+	      this.sequence[3].attach = false;
+	    }
+	  }
+
+		mergeChecklist(constant, stored) {
+		  angular.forEach(stored, function(val, key){
+		    var month = key;
+		    angular.forEach(val.points, function(v, k){
+		      var point = k;
+		      if (v && v.hasOwnProperty('complete') && constant[month].points[point]) {
+		        constant[month].points[point].complete = v.complete;
+		      }
+		    });
+		  });
+		}
+
+		initChecklist(listName, slug = false) {
+		  const storedList = this.store.get(listName);
+		  this[listName] = this.DatastoreService.get(listName);
+
+		  if (storedList) this.mergeChecklist(this[listName], storedList);
+		  if (slug) this.SlugifyService.process(this[listName], slug);
+		}
+
+		getViewportWidth(){
+		  if (this.$window.matchMedia('(min-width: 1920px)').matches) {
+		    return 1920;
+		  } else if (this.$window.matchMedia('(min-width: 1024px)').matches) {
+		    return 1024;
+		  } else {
+		    return 0;
+		  }
+	  }
+
+	  checkAndSetMobile(value) {
+	    this.$scope.mobile = (value === 0);
+	    this.sources = (value === 1920) ? this.videoSources.p720 : this.videoSources.p480;
+	  }
+
   }
 };
