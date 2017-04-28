@@ -120,12 +120,10 @@ export const AppComponent = {
 	  }
 
 		mergeChecklist(constant, stored) {
-		  angular.forEach(stored, function(val, key){
-		    var month = key;
-		    angular.forEach(val.points, function(v, k){
-		      var point = k;
-		      if (v && v.hasOwnProperty('complete') && constant[month].points[point]) {
-		        constant[month].points[point].complete = v.complete;
+		  stored.forEach(({ points }, monthIndex) => {
+		    points.forEach((point, pointIndex) => {
+		      if (point.hasOwnProperty('complete') && constant[monthIndex].points[pointIndex]) {
+		        constant[monthIndex].points[pointIndex].complete = point.complete;
 		      }
 		    });
 		  });
