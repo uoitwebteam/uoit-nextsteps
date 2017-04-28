@@ -2,16 +2,16 @@ export const AppComponent = {
   restrict: 'E',
   templateUrl: 'app.component.html',
   controller: class AppController {
-  	constructor($window, $scope, $timeout, $document, $http, $stateParams, DatastoreService, SlugifyService, store) {
+  	constructor($window, $scope, $timeout, $document, $stateParams, DatastoreService, SlugifyService, MatchMediaService, store) {
 			'ngInject';
 		  this.$window = $window;
 		  this.$scope = $scope;
 		  this.$timeout = $timeout;
 		  this.$document = $document;
-		  this.$http = $http;
 		  this.$stateParams = $stateParams;
 		  this.DatastoreService = DatastoreService;
 		  this.SlugifyService = SlugifyService;
+		  this.MatchMediaService = MatchMediaService;
 		  this.store = store;
 
 		  this.level = $stateParams.l == 105 ? 105 : 101;
@@ -41,29 +41,22 @@ export const AppComponent = {
 	      fallback: 'images/UA_Link_low.gif'
 		  }
 
-		  $scope.$watch(
-		  	this.getViewportWidth.bind(this),
-		  	this.checkAndSetMobile.bind(this)
-		  );
+		  this.MatchMediaService
+			  .when('(min-width: 0)', () => {
+			    this.$scope.mobile = true;
+			    this.sources = this.videoSources.p480;
+			  })
+			  .when('(min-width: 1024px)', () => {
+			    this.$scope.mobile = false;
+			  })
+			  .when('(min-width: 1920px)', () => {
+			    this.sources = this.videoSources.p720;
+			  })
 
 		  this.stickyHeader = {
 		    attach: false,
 		    unattach: false
 		  };
-
-		  this.sequence = [{
-		  	init: false, // permanent switch
-		  	logo: false, // uoit logo slide down
-		  	heading: false, // cta text flip in
-		  	cta: false, // cta button slide up
-		  	location: false // location resolved
-		  },{
-		    init: false,
-		  	title: false,
-		  	parallax: 0
-		  },{
-		    titles: []
-		  }];
 
 		  this.sections = [false, false, false, false, false, false, false, false];
 
@@ -72,28 +65,27 @@ export const AppComponent = {
 		  this.initChecklist(this.checklistNames.section4, 'name');
 		  this.initChecklist(this.checklistNames.section5);
 
-		  this.initSequence();
+
+		  this.sequence = {
+		  	init: false, // permanent switch
+		  	logo: false, // uoit logo slide down
+		  	heading: false, // cta text flip in
+		  	cta: false, // cta button slide up
+		  };
+		  this.initSequence(this);
 		}
 
-	  initSequence() {
-	  	if (this.sequence[0].init === false) {
-				this.sequence[0].init = true;
-				this.sequence[0].logo = true;
+	  initSequence({ sequence }) {
+	  	if (sequence.init === false) {
+				sequence.init = true;
+				sequence.logo = true;
 				return this.$timeout(() => {
-					this.sequence[0].logo = false;
-					this.sequence[0].heading = true;
+					sequence.logo = false;
+					sequence.heading = true;
 				}, 2000).then(() => this.$timeout(() => {
-		  		this.sequence[0].cta = true;
+		  		sequence.cta = true;
 		  	}, 1000));
 	  	}
-	  }
-
-		setSequence(seq, step, val, i) {
-	    if (i) {
-	      this.sequence[seq][step][i] = val;
-	    } else {
-	      this.sequence[seq][step] = val;
-	    }
 	  }
 
 	  scrollTo(id) {
@@ -136,21 +128,6 @@ export const AppComponent = {
 		  if (storedList) this.mergeChecklist(this[listName], storedList);
 		  if (slug) this.SlugifyService.process(this[listName], slug);
 		}
-
-		getViewportWidth(){
-		  if (this.$window.matchMedia('(min-width: 1920px)').matches) {
-		    return 1920;
-		  } else if (this.$window.matchMedia('(min-width: 1024px)').matches) {
-		    return 1024;
-		  } else {
-		    return 0;
-		  }
-	  }
-
-	  checkAndSetMobile(value) {
-	    this.$scope.mobile = (value === 0);
-	    this.sources = (value === 1920) ? this.videoSources.p720 : this.videoSources.p480;
-	  }
 
   }
 };
