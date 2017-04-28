@@ -1,20 +1,18 @@
-<section class="section-1" in-view="$ctrl.navMenu.active = !$inview;"
-	in-view-options="{offsetBottom: -1}"
-	ng-class="{ 'darkened' : $ctrl.sequence[0].globe[1] }">
+<section class="section-1">
 	<div>
 		<img src="https://shared.uoit.ca/global/files/img/logos/UOIT_white.png"
 			alt="University of Ontario Institute of Technology"
 			class="logo animated fadeIn"
-			ng-class="{'fadeOut' : !$ctrl.sequence[0].logo&&!$ctrl.sequence[0].location, 'fadeIn' : $ctrl.sequence[0].location}" />
+			ng-class="{ 'fadeOut' : !$ctrl.sequence[0].logo && !$ctrl.sequence[0].location }" />
 
 		<h1 class="animated"
-			ng-class="{'flipInX' : $ctrl.sequence[0].heading && !$ctrl.sequence[0].globe[0], 'hidden' : !$ctrl.sequence[0].heading, 'bounceOutUp' : $ctrl.sequence[0].globe[0]}">
+			ng-class="{'flipInX' : $ctrl.sequence[0].heading, 'hidden' : !$ctrl.sequence[0].heading, 'bounceOutUp' : $ctrl.sequence[0].location }">
 			Are you ready for UOIT?<br/>
 			<small>We are ready for you!</small>
 		</h1>
 
 		<button class="buttonWhite animated" 
-			ng-class="{'bounceInUp' : $ctrl.sequence[0].cta && !$ctrl.sequence[0].globe[0], 'hidden' : !$ctrl.sequence[0].cta, 'bounceOutDown' : $ctrl.sequence[0].globe[0]}"
+			ng-class="{'bounceInUp' : $ctrl.sequence[0].cta, 'hidden' : !$ctrl.sequence[0].cta, 'bounceOutDown' : $ctrl.sequence[0].location }"
 			ng-click="$ctrl.scrollTo('welcome')">
 			Get ready for September
 		</button>
