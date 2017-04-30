@@ -44,11 +44,11 @@ export const AppComponent = {
 
 		  this.MatchMediaService
 			  .when('(min-width: 0)', () => {
-			    this.$scope.mobile = true;
+			    this.isMobile = true;
 			    this.sources = this.videoSources.p480;
 			  })
 			  .when('(min-width: 1024px)', () => {
-			    this.$scope.mobile = false;
+			    this.isMobile = false;
 			  })
 			  .when('(min-width: 1920px)', () => {
 			    this.sources = this.videoSources.p720;

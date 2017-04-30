@@ -1,5 +1,5 @@
 <div class="main-container">
-	<bg-video visible="($ctrl.sections[0] || $ctrl.sections[2] || $ctrl.sections[4] || $ctrl.sections[6] || $ctrl.sections[7])" mobile="mobile" sources="$ctrl.sources" fallback="{{ ::$ctrl.videoSources.fallback }}"></bg-video>
+	<bg-video visible="($ctrl.sections[0] || $ctrl.sections[2] || $ctrl.sections[4] || $ctrl.sections[6] || $ctrl.sections[7])" mobile="$ctrl.isMobile" sources="$ctrl.sources" fallback="{{ ::$ctrl.videoSources.fallback }}"></bg-video>
 
 	<page-nav active="!$ctrl.sections[0]"></page-nav>
 
