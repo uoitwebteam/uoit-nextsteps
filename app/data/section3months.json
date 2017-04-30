@@ -1,0 +1,37 @@
+[  
+  {  
+     "month":"June",
+     "points":[  
+        {  
+           "text":"Sign up for your faculty-specific Smart Start program. Registration opens Friday, June 30."
+        }
+     ]
+  },
+  {  
+     "month":"July",
+     "points":[  
+        {  
+           "text":"Attend your faculty-specific iBegin orientation (July 26 to August 4)."
+        }
+     ]
+  },
+  {  
+     "month":"August",
+     "points":[  
+        {  
+           "text":"Attend your faculty-specific Smart Start program (August 21 to September 1)."
+        },
+        {  
+           "text":"Student Accessibility Services hosts transition evening for parents (August 21) and Summer Transition Program (August 22 to 24)."
+        }
+     ]
+  },
+  {  
+     "month":"September",
+     "points":[  
+        {  
+           "text":"Attend September Orientation and meet new friends on Tuesday, September 5 and Wednesday, September 6."
+        }
+     ]
+  }
+]
