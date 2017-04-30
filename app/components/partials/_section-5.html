@@ -17,8 +17,8 @@
 				in-view-options="{ offset: [50, 0, -50, 0], throttle: 200 }"
 				ng-class="{'flipOutX' : !faculty.show, 'flipInX' : faculty.show }">
 				<h3 ng-style="::{ borderLeft: 'solid 10px '+faculty.fac[1] }">{{ ::faculty.fac[0] }}</h3>
-				<h3 ng-if="::faculty.fac2" ng-style="::{ borderLeft: 'solid 10px '+faculty.fac2[1] }">{{ ::faculty.fac2[0] }}</h3>
-				<h3 ng-if="::faculty.fac3" ng-style="::{ borderLeft: 'solid 10px '+faculty.fac3[1] }">{{ ::faculty.fac3[0] }}</h3>
+				<h3 ng-if="::faculty.fac2" ng-style="::{ borderLeft: 'solid 10px ' + faculty.fac2[1] }">{{ ::faculty.fac2[0] }}</h3>
+				<h3 ng-if="::faculty.fac3" ng-style="::{ borderLeft: 'solid 10px ' + faculty.fac3[1] }">{{ ::faculty.fac3[0] }}</h3>
 				<ul>
 					<li ng-repeat="date in ::faculty.dates">{{ ::date }}</li>
 				</ul>

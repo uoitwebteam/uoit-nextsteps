@@ -15,7 +15,7 @@
 					<div class="faculty-bg-content">
 						<h3 id="{{ ::fac.anchor }}">
 							<!-- <small>{{ ::fac.date }}:</small><br/> -->
-							<span ng-style="::{ color: fac.color }">Faculty of<span ng-bind-html="::fac.name"></span></span>
+							<span ng-style="::{ color: fac.color }">Faculty of <span ng-bind-html="::fac.name"></span></span>
 							<span ng-if="::fac.name2" ng-style="::{ color: fac.color2 }" id="{{ ::fac.anchor2 }}"><br/>Faculty of {{ ::fac.name2 }}</span>
 						</h3>
 						<a ng-href="https://studentlife.uoit.ca/student-experience-centre/orientation/ibegin.php?utm_source=nextsteps&utm_medium=web&utm_campaign=ibegin_{{ ::fac.anchor }}" class="button" target="_blank">Learn more about <span class="ibegin">iBEGIN</span> <span class="ion-chevron-right"></span></a>
