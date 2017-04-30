@@ -10,6 +10,7 @@ export const AppComponent = {
 	  	DatastoreService,
 	  	SlugifyService,
 	  	MatchMediaService,
+	  	NotificationService,
 	  ) {
 			'ngInject';
 		  this.$window = $window;
@@ -19,6 +20,7 @@ export const AppComponent = {
 		  this.DatastoreService = DatastoreService;
 		  this.SlugifyService = SlugifyService;
 		  this.MatchMediaService = MatchMediaService;
+		  this.NotificationService = NotificationService;
 
 		  this.level = $stateParams.l == 105 ? 105 : 101;
 
@@ -125,5 +127,9 @@ export const AppComponent = {
 		  });
 		}
 
+		onChecklistToggle(listName) {
+      this.NotificationService.show();
+      this.DatastoreService.set(listName, this[listName]);
+		}
   }
 };

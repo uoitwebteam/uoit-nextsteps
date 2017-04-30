@@ -200,4 +200,8 @@ export class DatastoreService {
 	  	console.error(`Failed to load ${ listName }! Error: ${ err.status } ${ err.statusText }`);
 	  });
 	}
+
+	set(listName, list) {
+		this.store.set(listName, list);
+	}
 }

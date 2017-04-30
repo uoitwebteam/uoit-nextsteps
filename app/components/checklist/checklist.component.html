@@ -2,17 +2,17 @@
 	<div ng-repeat="item in ::$ctrl.listItems">
 		<h2 class="animated"
 			in-view="item.show = $inview"
-			in-view-options="{ offsetTop: 50, offsetBottom: -50, throttle: 200 }"
+			in-view-options="{ throttle: 200 }"
 			ng-class="{'fadeOutLeft' : !item.show, 'fadeInLeft' : item.show}">
 			{{ ::item.month }}
 		</h2>
 		<ul>
 	  	<li ng-repeat="point in ::item.points" class="animated"
-	  		ng-if="!point.level || point.level == $ctrl.level"
+	  		ng-if="::(!point.level || point.level == $ctrl.level)"
 				in-view="point.show = $inview"
-				in-view-options="{ offsetTop: 50, offsetBottom: -50, throttle: 200 }"
+				in-view-options="{ throttle: 200 }"
 				ng-class="{'fadeOutLeft' : !point.show, 'fadeInLeft' : point.show }">
-				<checklist-item item="point" on-toggle="$ctrl.toggle()"></checklist-item>
+				<checklist-item item="point" on-toggle="$ctrl.onToggle()"></checklist-item>
 	  	</li>
 		</ul>
 	</div>

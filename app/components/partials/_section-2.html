@@ -15,7 +15,11 @@
 			<p ng-if="level==105" class="important"><span class="ion-asterisk"></span> Make sure to accept your offer of admission by the date specified in your offer letter!</p>
 		</div>
 
-		<checklist list-name="{{ ::$ctrl.checklistNames.section2 }}" list-items="$ctrl[$ctrl.checklistNames.section2]" level="{{ ::$ctrl.level }}"></checklist>
+		<checklist
+			list-items="$ctrl[$ctrl.checklistNames.section2]"
+			level="{{ ::$ctrl.level }}"
+			on-toggle="$ctrl.onChecklistToggle($ctrl.checklistNames.section2)">
+		</checklist>
 		
 	</div>
 </section>
