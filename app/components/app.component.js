@@ -2,13 +2,14 @@ export const AppComponent = {
   restrict: 'E',
   templateUrl: 'app.component.html',
   controller: class AppController {
-  	constructor($window, $scope, $timeout, $document, $stateParams, DatastoreService, SlugifyService, MatchMediaService, store) {
+  	constructor($window, $scope, $timeout, $document, $stateParams, $http, DatastoreService, SlugifyService, MatchMediaService, store) {
 			'ngInject';
 		  this.$window = $window;
 		  this.$scope = $scope;
 		  this.$timeout = $timeout;
 		  this.$document = $document;
 		  this.$stateParams = $stateParams;
+		  this.$http = $http;
 		  this.DatastoreService = DatastoreService;
 		  this.SlugifyService = SlugifyService;
 		  this.MatchMediaService = MatchMediaService;
@@ -123,10 +124,12 @@ export const AppComponent = {
 
 		initChecklist(listName, slug = false) {
 		  const storedList = this.store.get(listName);
-		  this[listName] = this.DatastoreService.get(listName);
-
-		  if (storedList) this.mergeChecklist(this[listName], storedList);
-		  if (slug) this.SlugifyService.process(this[listName], slug);
+		  this.DatastoreService.get(listName).then(result => {
+		  	console.log(result);
+		  	this[listName] = result.data;
+			  if (storedList) this.mergeChecklist(this[listName], storedList);
+			  if (slug) this.SlugifyService.process(this[listName], slug);
+		  });
 		}
 
   }

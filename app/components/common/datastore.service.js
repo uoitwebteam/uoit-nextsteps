@@ -1,8 +1,7 @@
 export class DatastoreService {
-	constructor() {
+	constructor($http) {
 	  'ngInject';
-
-	  const service = {};
+	  this.$http = $http;
 	  const f = {
 	    bit: 'Business and Information Technology',
 	    eas: 'Engineering and Applied Science',
@@ -11,7 +10,7 @@ export class DatastoreService {
 	    sci: 'Science',
 	    ssh: 'Social Science and Humanities'
 	  }
-	  const data = {
+		this.data = {
 	    // SECTION 2 MONTH CHECKLIST
 	    // 
 	    // 
@@ -26,7 +25,7 @@ export class DatastoreService {
 	    }, {
 	      month: 'June',
 	      points: [{ 
-	          text: '<a target="_blank" href="http://uoit.ca/main/future-students/welcome/accepting-offer-101.php?utm_source=nextsteps&utm_medium=web&utm_campaign=accept">Accept your offer of admission</a> by Thursday, June 1.',
+	          text: '<a target="_blank" href="http://uoit.ca/future-students/welcome/accept-your-offer/accept-your-offer-ouac.php?utm_source=nextsteps&utm_medium=web&utm_campaign=accept">Accept your offer of admission</a> by Thursday, June 1.',
 	          level: 101
 	        },{ 
 	          text: '<a target="_blank" href="http://uoit.ca/main/current-students/campus-services/housing-options/on-campus.php?utm_source=nextsteps&utm_medium=web&utm_campaign=residence">Apply to residence</a> by Thursday, June 1.'
@@ -131,16 +130,7 @@ export class DatastoreService {
 	      image: 'ibegin_feas.jpg',
 	      color: '#6F263D',
 	      color2: '#5F259F'
-	    }
-	    // ,{ 
-	    //   date: 'Friday, August 12',
-	    //   name: 'Alternate <span class="ibegin">iBEGIN</span> date (not faculty-specific)',
-	    //   image: 'ibegin_panorama_blur.jpg',
-	    //   color: '#000000',
-	    //   show: false,
-	    //   nocover: true
-	    // }
-	    ],
+	    }],
 	    // SMART START MONTH CHECKLIST
 	    // 
 	    // 
@@ -177,11 +167,15 @@ export class DatastoreService {
 	      ]
 	    }]
 	  }
-
-	  service.get = function(set) {
-	    return data[set];
-	  }
-
-	  return service;
+	}
+	get(set) {
+    return {
+    	then: (callback) => {
+    		return callback({ data: this.data[set] });
+    	}
+    };
+	}
+	getJSON(set) {
+		return this.$http.get(set);
 	}
 }
