@@ -64,7 +64,7 @@ export default {
   },
 
   gzip: {
-    src: 'build/**/*.{html,xml,json,css,js,js.map,css.map}',
+    src: 'build/**/*.{html,xml,css,js,js.map,css.map}',
     dest: 'build/',
     options: {}
   },
