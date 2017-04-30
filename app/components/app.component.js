@@ -2,18 +2,23 @@ export const AppComponent = {
   restrict: 'E',
   templateUrl: 'app.component.html',
   controller: class AppController {
-  	constructor($window, $scope, $timeout, $document, $stateParams, $http, DatastoreService, SlugifyService, MatchMediaService, store) {
+  	constructor(
+	  	$window,
+	  	$timeout,
+	  	$document,
+	  	$stateParams,
+	  	DatastoreService,
+	  	SlugifyService,
+	  	MatchMediaService,
+	  ) {
 			'ngInject';
 		  this.$window = $window;
-		  this.$scope = $scope;
 		  this.$timeout = $timeout;
 		  this.$document = $document;
 		  this.$stateParams = $stateParams;
-		  this.$http = $http;
 		  this.DatastoreService = DatastoreService;
 		  this.SlugifyService = SlugifyService;
 		  this.MatchMediaService = MatchMediaService;
-		  this.store = store;
 
 		  this.level = $stateParams.l == 105 ? 105 : 101;
 
@@ -112,22 +117,10 @@ export const AppComponent = {
 	    }
 	  }
 
-		mergeChecklist(constant, stored) {
-		  stored.forEach(({ points }, monthIndex) => {
-		    points.forEach((point, pointIndex) => {
-		      if (point.hasOwnProperty('complete') && constant[monthIndex].points[pointIndex]) {
-		        constant[monthIndex].points[pointIndex].complete = point.complete;
-		      }
-		    });
-		  });
-		}
-
 		initChecklist(listName, slug = false) {
-		  const storedList = this.store.get(listName);
-		  this.DatastoreService.getJSON(listName).then(result => {
-		  	console.log(result);
-		  	this[listName] = result.data;
-			  if (storedList) this.mergeChecklist(this[listName], storedList);
+			// switch to .getConstant(listName) for local copy
+		  this.DatastoreService.get(listName).then(list => {
+		  	this[listName] = list;
 			  if (slug) this.SlugifyService.process(this[listName], slug);
 		  });
 		}

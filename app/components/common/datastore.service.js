@@ -1,7 +1,8 @@
 export class DatastoreService {
-	constructor($http) {
+	constructor($http, store) {
 	  'ngInject';
 	  this.$http = $http;
+	  this.store = store;
 	  const f = {
 	    bit: 'Business and Information Technology',
 	    eas: 'Engineering and Applied Science',
@@ -168,14 +169,35 @@ export class DatastoreService {
 	    }]
 	  }
 	}
-	get(set) {
+
+	mergeChecklist(constant, stored) {
+	  stored.forEach(({ points }, monthIndex) => {
+	    points.forEach((point, pointIndex) => {
+	      if (point.hasOwnProperty('complete') && constant[monthIndex].points[pointIndex]) {
+	        constant[monthIndex].points[pointIndex].complete = point.complete;
+	      }
+	    });
+	  });
+	}
+
+	getConstant(listName) {
     return {
     	then: (callback) => {
-    		return callback({ data: this.data[set] });
+    		const data = this.data[listName];
+			  const storedList = this.store.get(listName);
+			  if (storedList) this.mergeChecklist(data, storedList);
+    		return callback({ data });
     	}
     };
 	}
-	getJSON(set) {
-		return this.$http.get(`data/${set}.json`);
+
+	get(listName) {
+		return this.$http.get(`data/${ listName }.json`).then(({ data }) => {
+		  const storedList = this.store.get(listName);
+		  if (storedList) this.mergeChecklist(data, storedList);
+		  return data;
+	  }, err => {
+	  	console.error(`Failed to load ${ listName }! Error: ${ err.status } ${ err.statusText }`);
+	  });
 	}
 }
