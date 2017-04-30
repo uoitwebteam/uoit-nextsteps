@@ -7,6 +7,11 @@ export default {
   sourceDir: './app/',
   buildDir: './build/',
 
+  data: {
+  	src: 'app/**/*.json',
+  	dest: 'build/data'
+  },
+  
   styles: {
     src: 'app/styles/**/*.scss',
     dest: 'build/css',
