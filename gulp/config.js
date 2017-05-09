@@ -23,6 +23,7 @@ export default {
     src: 'app/js/**/*.js',
     entry: 'app/components/app.js',
     include: [
+    	'app/matchmedia.js',
     	'app/modernizr.js'
     ],
     dest: 'build/js',
