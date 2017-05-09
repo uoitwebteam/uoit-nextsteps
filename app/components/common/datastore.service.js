@@ -195,6 +195,7 @@ export class DatastoreService {
 		return this.$http.get(`data/${ listName }.json`).then(({ data }) => {
 		  const storedList = this.store.get(listName);
 		  if (storedList) this.mergeChecklist(data, storedList);
+		  console.log(`Loaded list: ${ listName }`, data)
 		  return data;
 	  }, err => {
 	  	console.error(`Failed to load ${ listName }! Error: ${ err.status } ${ err.statusText }`);

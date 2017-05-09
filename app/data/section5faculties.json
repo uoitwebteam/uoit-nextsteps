@@ -1,0 +1,63 @@
+[
+	{
+		"faculties": [
+			{
+				"name": "Business and Information Technology",
+				"color": "#00558C"
+			}
+		],
+		"dates": [
+			"Monday, August 21",
+			"Monday, August 29"
+		]
+	},
+	{
+		"faculties": [
+			{
+				"name": "Energy Systems and Nuclear Science",
+				"color": "#6F263D"
+			},
+			{
+				"name": "Engineering and Applied Science",
+				"color": "#5F259F"
+			},
+			{
+				"name": "Science",
+				"color": "#007749"
+			}
+		],
+		"dates": [  
+			"Wednesday, August 9 and Thursday, August 10",
+			"Monday, August 14 and Tuesday, August 15",
+			"Wednesday, August 16 and Thursday, August 17",
+			"Monday, August 21 and Tuesday, August 22",
+			"Wednesday, August 23 and Thursday, August 24",
+			"Tuesday, August 29 and Wednesday, August 30",
+			"Thursday, August 31 and Friday, September 1"
+		]
+	},
+	{
+		"faculties": [
+			{
+				"name": "Health Sciences",
+				"color": "#AF272F"
+			}
+		],
+		"dates": [  
+			"Tuesday, August 22",
+			"Monday, August 28"
+		]
+	},
+	{
+		"faculties": [
+			{
+				"name": "Social Science and Humanities",
+				"color": "#BE4D00"
+			}
+		],
+		"dates": [  
+			"Wednesday, August 23",
+			"Wednesday, August 30"
+		]
+	}
+]

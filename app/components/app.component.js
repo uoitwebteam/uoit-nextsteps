@@ -27,8 +27,8 @@ export const AppComponent = {
 		  this.checklistNames = {
 		  	section2: 'section2months',
 		  	section3: 'section3months',
-		  	section4: 'facultyList',
-		  	section5: 'smartstartList'
+		  	section4: 'section4faculties',
+		  	section5: 'section5faculties'
 		  };
 
 		  this.videoSources = {

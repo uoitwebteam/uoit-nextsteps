@@ -1,0 +1,56 @@
+[
+	{
+		"faculties": [
+			{
+				"name": "Science",
+				"color": "#007749"
+			}
+		],
+		"dates": ["WEDNESDAY, JULY 26", "THURSDAY, AUGUST 3"],
+		"image": "ibegin_fsci.jpg"
+	},
+	{
+		"faculties": [
+			{
+				"name": "Business and Information Technology",
+				"color": "#00558C"
+			}
+		],
+		"dates": ["THURSDAY, JULY 27", "FRIDAY, AUGUST 4"],
+		"image": "ibegin_fbit.jpg"
+	},
+	{
+		"faculties": [
+			{
+				"name": "Health Sciences",
+				"color": "#AF272F"
+			}
+		],
+		"dates": ["FRIDAY, JULY 28"],
+		"image": "ibegin_fhs.jpg"
+	},
+	{
+		"faculties": [
+			{
+				"name": "Social Science and Humanities",
+				"color": "#BE4D00"
+			}
+		],
+		"dates": ["MONDAY, JULY 31", "TUESDAY, AUGUST 1"],
+		"image": "ibegin_fssh.jpg"
+	},
+	{
+		"faculties": [
+			{
+				"name": "Energy Systems and Nuclear Science",
+				"color": "#6F263D"
+			},
+			{
+				"name": "Engineering and Applied Science",
+				"color": "#5F259F"
+			}
+		],
+		"dates": ["WEDNESDAY, AUGUST 2"],
+		"image": "ibegin_feas.jpg"
+	}
+]

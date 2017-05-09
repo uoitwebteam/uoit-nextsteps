@@ -2,9 +2,8 @@ export class SlugifyService {
 	process(items, slugProperty) {
     return items.map(item => {
       item.anchor = this.slug(item[slugProperty]);
-      var toslug2 = slugProperty + '2';
-      if (item[toslug2]) item.anchor2 = this.slug(item[toslug2]);
-      if (item.items) this.process(item.items, slugProperty);
+      const children = (item.items || item.faculties);
+      if (children && children.length) this.process(children, slugProperty);
       return item;
     });
   }
