@@ -2,8 +2,8 @@
 	<article>
 		<h2><span class="ibegin">iBEGIN</span> is the first part of your orientation at the University.</h2>
 		<p>The event is designed to promote your academic and personal success. You will have the opportunity to meet classmates, faculty and staff; learn strategies for attending lectures; and discuss how to make the most of your university experience.</p>
-		<h2><span class="icon icon_calendar inline-icon"></span> Wednesday, July 26 to Friday, August 4<span class="asterisk">*</span></h2>
-		<p><span class="asterisk">*</span> Please continue to check back for your program’s specific iBEGIN date.</p>
+		<!-- <h2><span class="icon icon_calendar inline-icon"></span> Wednesday, July 26 to Friday, August 4<span class="asterisk">*</span></h2>
+		<p><span class="asterisk">*</span> Please continue to check back for your program’s specific iBEGIN date.</p> -->
 	</article>
 		<ul class="faculty-bg-list">
 			<li class="animated"
@@ -15,13 +15,13 @@
 					<img bh-src-responsive="::[['default', 'images/768/' + item.image], ['small', 'images/1280/' + item.image], ['medium', 'images/1920/' + item.image]]" class="faculty-bg-image" />
 					<div class="faculty-bg-content">
 						<h3>
-							<!-- <small>{{ ::fac.date }}:</small><br/> -->
 							<span ng-repeat="faculty in item.faculties track by faculty.name"
 								ng-style="::{ color: faculty.color }"
 								id="{{ ::faculty.anchor }}"
 								ng-bind-html="::'Faculty of ' + faculty.name + (!$last ? '<br>' : '')">
 							</span>
 						</h3>
+						<h4 ng-repeat="date in ::item.dates">{{ ::date }}</h4>
 						<a ng-href="https://studentlife.uoit.ca/student-experience-centre/orientation/ibegin.php?utm_source=nextsteps&utm_medium=web&utm_campaign=ibegin_{{ ::fac.anchor }}" class="button" target="_blank">Learn more about <span class="ibegin">iBEGIN</span> <span class="ion-chevron-right"></span></a>
 					</div>
 				</div>
