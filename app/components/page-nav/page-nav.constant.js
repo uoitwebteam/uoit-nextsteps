@@ -54,8 +54,8 @@ export const PageNavConstant = {
     icon: 'ion-ios-body',
     active: false
   },{
-    title: 'Orientation',
-    icon: 'icon icon_compass2',
+    title: 'Ignite',
+    icon: 'icon icon_directionalarrows',
     active: false
   },{
     title: 'Contact',
